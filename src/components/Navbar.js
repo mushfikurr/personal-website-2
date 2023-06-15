@@ -1,7 +1,28 @@
 import NowListening from "./NowPlaying";
 
-function NavbarItem() {
+function NavbarItem(props) {
+  if (props.activePage === props.page) {
+    return (
+      <a
+        href="#"
+        class="text-l font-semibold hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-white before:absolute before:left-0 before:-bottom-2"
+      >
+        {props.page}
+      </a>
+      // <p className="underline decoration-2 underline-offset-[10px] text-l font-semibold">
 
+      // </p>
+    );
+  } else {
+    return (
+      <a
+        href="#"
+        className="text-l hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-white before:absolute before:left-0 before:-bottom-2 "
+      >
+        {props.page}
+      </a>
+    );
+  }
 }
 
 export default function Navbar(props) {
@@ -10,10 +31,9 @@ export default function Navbar(props) {
       <NowListening />
 
       <div className="flex space-x-8 h-full items-center text-gray-300">
-        {props.pages?.map(() => <NavbarItem />)}
-        <p className="text-l font-semibold">Home</p>
-        <p className="text-l">Projects</p>
-        <p className="text-l">Contact</p>
+        {props.pages?.map((page) => (
+          <NavbarItem key={page} page={page} activePage={props.activePage} />
+        ))}
       </div>
     </div>
   );

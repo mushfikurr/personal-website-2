@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Socials from "./components/Socials";
@@ -11,7 +12,11 @@ function App() {
     <div className="w-screen h-screen bg-darker-gray py-12 px-24 font-iAMono">
       <div className="flex flex-col h-full">
         {/* Navbar */}
-        <Navbar pages={pages} />
+        <Navbar
+          pages={pages}
+          activePage={activePage}
+          setActivePage={setActivePage}
+        />
 
         <div className="flex-grow flex flex-col">
           <div className="h-72">
