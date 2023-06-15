@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const ENDPOINT = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=mvshy&api_key=${process.env.REACT_APP_LASTFM_KEY}&format=json`
+
 const ClickRefreshWrapper = (props) => {
   return (
     <div
@@ -62,9 +64,7 @@ export default function NowListening() {
   const getCurrentSong = async () => {
     timer = null;
     setHasLoadedSong(false);
-    fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=mvshy&api_key=${process.env.REACT_APP_LASTFM_KEY}&format=json`
-    )
+    fetch(ENDPOINT)
       .then(async (res) => {
         const resJson = await res.json();
         // Add some delay to the loading to make transition less jarring
