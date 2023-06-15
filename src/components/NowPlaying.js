@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const ENDPOINT = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=mvshy&api_key=${process.env.REACT_APP_LASTFM_KEY}&format=json`
+const ENDPOINT = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=mvshy&api_key=${process.env.REACT_APP_LASTFM_KEY}&format=json`;
 
 const ClickRefreshWrapper = (props) => {
   return (
@@ -47,10 +47,10 @@ function CoverImage(props) {
     // Loading current track
     return (
       <div
-        class="inline-block mr-4 h-16 w-16 animate-spin rounded-full border-2 border-lighter-gray border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        className="inline-block mr-4 h-16 w-16 animate-spin rounded-full border-2 border-deepblue-500 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
         role="status"
       >
-        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
+        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
       </div>
     );
   }

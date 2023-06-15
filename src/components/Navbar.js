@@ -5,7 +5,7 @@ function NavbarItem(props) {
     return (
       <a
         href="#"
-        class="text-l text-deepblue-500 font-semibold hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-white before:absolute before:left-0 before:-bottom-2"
+        className="text-l text-deepblue-500 font-semibold hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-deepblue-500 before:absolute before:left-0 before:-bottom-2"
       >
         {props.page}
       </a>
@@ -17,7 +17,7 @@ function NavbarItem(props) {
     return (
       <a
         href="#"
-        className="text-l hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-white before:absolute before:left-0 before:-bottom-2 "
+        className="text-l hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-deepblue-500 before:absolute before:left-0 before:-bottom-2 "
       >
         {props.page}
       </a>
