@@ -6,7 +6,7 @@ export default function Header() {
           <h1 className="text-3xl text-white font-medium">
             Hi, I'm <span className="text-deepblue-500">Mushfikur</span>
           </h1>
-          <h3 className="text-xl text-gray-300">
+          <h3 className="text-lg text-gray-300">
             A graduate passionate about building software.
           </h3>
         </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Socials from "./components/Socials";
+import Projects from "./components/Projects";
 
 const pages = ["Home", "Projects", "Contact"];
 
@@ -19,7 +20,7 @@ function App() {
         />
 
         <div className="flex-grow flex flex-col">
-          <div className="h-72">
+          <div className="h-2/5">
             <div className="flex h-full w-full">
               {/* Social Widget */}
               <Socials />
@@ -34,9 +35,13 @@ function App() {
             <div className="h-3/5">
               {/* Project title */}
               <div className="flex items-end justify-center h-1/5">
-                <h2 className="text-gray-100">Projects I've worked on</h2>
+                <h2 className="text-gray-100 text-lg">
+                  Projects I've worked on
+                </h2>
               </div>
-              <div className="h-4/5"></div>
+              <div className="h-4/5">
+                <Projects />
+              </div>
             </div>
             <div className="h-2/5"></div>
           </div>
