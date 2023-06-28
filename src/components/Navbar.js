@@ -5,19 +5,16 @@ function NavbarItem(props) {
     return (
       <a
         href="#"
-        className="text-l text-deepblue-500 font-semibold hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-deepblue-500 before:absolute before:left-0 before:-bottom-2"
+        className="text-md text-l text-deepblue-500 font-semibold hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-deepblue-500 before:absolute before:left-0 before:-bottom-2"
       >
         {props.page}
       </a>
-      // <p className="underline decoration-2 underline-offset-[10px] text-l font-semibold">
-
-      // </p>
     );
   } else {
     return (
       <a
         href="#"
-        className="text-l hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-deepblue-500 before:absolute before:left-0 before:-bottom-2 "
+        className="text-md md:text-l hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-deepblue-500 before:absolute before:left-0 before:-bottom-2 "
       >
         {props.page}
       </a>
@@ -27,7 +24,7 @@ function NavbarItem(props) {
 
 export default function Navbar(props) {
   return (
-    <div className="flex h-16 items-center">
+    <div className="flex h-16 max-sm:justify-center items-center">
       <NowListening />
 
       <div className="flex space-x-8 h-full items-center text-gray-300">

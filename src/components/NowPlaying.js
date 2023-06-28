@@ -22,24 +22,28 @@ function CoverImage(props) {
       // Currently listening
       return (
         <ClickRefreshWrapper action={props.reload}>
-          <img
-            className="shadow-inner w-16 h-16 rounded-full mr-4 outline outline-green-500 outline-2"
-            width="16"
-            height="16"
-            src={props.imageUrl}
-          />
+          <div className="inline flex-shrink-0 filter transition-all duration-300 hover:shadow-inner  hover:brightness-75">
+            <img
+              className="mr-4 h-16 w-16 flex-shrink-0 rounded-full outline outline-green-500"
+              width="16"
+              height="16"
+              src={props.imageUrl}
+            />
+          </div>
         </ClickRefreshWrapper>
       );
     } else {
       // Not currently listening
       return (
         <ClickRefreshWrapper action={props.reload}>
-          <img
-            className="shadow-inner w-16 h-16 rounded-full mr-4 outline outline-lighter-gray outline-2"
-            width="16"
-            height="16"
-            src={props.imageUrl}
-          />
+          <div className="inline flex-shrink-0 filter transition-all duration-300 hover:shadow-inner hover:brightness-75">
+            <img
+              className="outline-lighter-gray mr-4 h-16 w-16 flex-shrink-0 rounded-full outline"
+              width="16"
+              height="16"
+              src={props.imageUrl}
+            />
+          </div>
         </ClickRefreshWrapper>
       );
     }
@@ -47,7 +51,7 @@ function CoverImage(props) {
     // Loading current track
     return (
       <div
-        className="inline-block mr-4 h-16 w-16 animate-spin rounded-full border-2 border-deepblue-500 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        className="border-lighter-gray mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
         role="status"
       >
         <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
@@ -78,40 +82,51 @@ export default function NowListening() {
       });
   };
 
+  const renderSongAndImage = () => {
+    if (hasLoadedSong) {
+      return (
+        <>
+          <CoverImage
+            imageUrl={currentSong?.image[2]["#text"]}
+            active={currentSong["@attr"]?.nowplaying}
+            loaded={hasLoadedSong}
+            reload={getCurrentSong}
+          />
+          <div className="flex flex-grow flex-col">
+            <p className="max-w-sm truncate text-sm text-gray-300">
+              {currentSong["@attr"]?.nowplaying
+                ? "Currently listening to..."
+                : "Last listened to..."}
+            </p>
+            <p className="text-l -mt-[4px] text-gray-400">
+              {currentSong?.artist["#text"]} - {currentSong?.name}
+            </p>
+          </div>
+        </>
+      );
+    } else {
+      // Fallback if no songs are pulled from API
+      return (
+        <>
+          <CoverImage loaded={hasLoadedSong} />
+          <div className="flex flex-grow flex-col">
+            <p className="text-sm text-gray-300"></p>
+          </div>
+        </>
+      );
+    }
+  };
+
   useEffect(() => {
     getCurrentSong();
     return () => clearTimeout(timer);
   }, []);
 
-  if (hasLoadedSong) {
-    return (
-      <div className="flex items-center flex-grow">
-        <CoverImage
-          imageUrl={currentSong?.image[2]["#text"]}
-          active={currentSong["@attr"]?.nowplaying}
-          loaded={hasLoadedSong}
-          reload={getCurrentSong}
-        />
-        <div className="block xs:hidden flex flex-col flex-grow invisible md:visible">
-          <p className="text-gray-300 text-sm">
-            {currentSong["@attr"]?.nowplaying
-              ? "Currently listening to..."
-              : "Last listened to..."}
-          </p>
-          <p className="-mt-[4px] text-l text-gray-400">
-            {currentSong.artist["#text"]} - {currentSong.name}
-          </p>
-        </div>
+  return (
+    <div className="group">
+      <div className="hidden flex-grow items-center sm:block">
+        {renderSongAndImage()}
       </div>
-    );
-  } else {
-    return (
-      <div className="flex items-center flex-grow">
-        <CoverImage loaded={hasLoadedSong} />
-        <div className="block xs:hidden flex flex-col flex-grow invisible md:visible">
-          <p className="text-gray-300 text-sm"></p>
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
 }

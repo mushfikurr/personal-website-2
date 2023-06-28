@@ -8,8 +8,8 @@ function Project() {
 
 export default function Projects() {
   return (
-    <div className="flex flex-col justify-center h-full w-full text-gray-100 px-14">
-      <div className="grid grid-cols-3 gap-8">
+    <div className="h-full w-full text-gray-100 py-4 px-16">
+      <div className="grid lg:grid-cols-3 gap-8">
         {["Hello", "Hi", "Hello"].map((_) => (
           <Project />
         ))}
