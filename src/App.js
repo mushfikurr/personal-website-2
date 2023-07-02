@@ -43,7 +43,24 @@ function App() {
                 <Projects />
               </div>
             </div>
-            <div className="h-2/5"></div>
+            <div className="flex items-end justify-center h-2/5">
+              <div className="hidden lg:block text-gray-200 bg-lighter-gray hover:bg-deepblue-500 transition ease-in-out hover:translate-y-1 cursor-pointer  duration-300 p-3 rounded-full">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-4 h-4 text-gray-200"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>

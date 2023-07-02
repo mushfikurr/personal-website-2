@@ -22,7 +22,7 @@ function CoverImage(props) {
       // Currently listening
       return (
         <ClickRefreshWrapper action={props.reload}>
-          <div className="inline flex-shrink-0 filter transition-all duration-300 hover:shadow-inner  hover:brightness-75">
+          <div className="inline flex-shrink-0 filter transition-all duration-300 hover:shadow-inner hover:brightness-125">
             <img
               className="mr-4 h-16 w-16 flex-shrink-0 rounded-full outline outline-green-500"
               width="16"
@@ -92,13 +92,13 @@ export default function NowListening() {
             loaded={hasLoadedSong}
             reload={getCurrentSong}
           />
-          <div className="flex flex-grow flex-col">
-            <p className="max-w-sm truncate text-sm text-gray-300">
+          <div className="flex flex-grow flex-col max-w-md">
+            <p className="text-sm text-gray-300">
               {currentSong["@attr"]?.nowplaying
                 ? "Currently listening to..."
                 : "Last listened to..."}
             </p>
-            <p className="text-l -mt-[4px] text-gray-400">
+            <p className="text-sm -mt-[4px] text-gray-400">
               {currentSong?.artist["#text"]} - {currentSong?.name}
             </p>
           </div>
@@ -123,10 +123,8 @@ export default function NowListening() {
   }, []);
 
   return (
-    <div className="group">
-      <div className="hidden flex-grow items-center sm:block">
-        {renderSongAndImage()}
-      </div>
+    <div className="hidden md:flex flex-grow items-center">
+      {renderSongAndImage()}
     </div>
   );
 }
