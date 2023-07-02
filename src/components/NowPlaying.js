@@ -92,13 +92,13 @@ export default function NowListening() {
             loaded={hasLoadedSong}
             reload={getCurrentSong}
           />
-          <div className="flex flex-grow flex-col max-w-md">
+          <div className="flex max-w-md flex-grow flex-col">
             <p className="text-sm text-gray-300">
               {currentSong["@attr"]?.nowplaying
                 ? "Currently listening to..."
                 : "Last listened to..."}
             </p>
-            <p className="text-sm -mt-[4px] text-gray-400">
+            <p className="-mt-[4px] text-sm text-gray-400">
               {currentSong?.artist["#text"]} - {currentSong?.name}
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function NowListening() {
   }, []);
 
   return (
-    <div className="hidden md:flex flex-grow items-center">
+    <div className="hidden flex-grow items-center md:flex">
       {renderSongAndImage()}
     </div>
   );

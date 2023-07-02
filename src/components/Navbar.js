@@ -5,7 +5,7 @@ function NavbarItem(props) {
     return (
       <a
         href="#"
-        className="text-md text-l text-deepblue-500 font-semibold hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-deepblue-500 before:absolute before:left-0 before:-bottom-2"
+        className="text-md text-l text-deepblue-500 before:bg-deepblue-500 relative font-semibold before:absolute before:-bottom-2 before:left-0 before:h-1 before:w-full before:origin-right before:scale-x-0 before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100"
       >
         {props.page}
       </a>
@@ -14,7 +14,7 @@ function NavbarItem(props) {
     return (
       <a
         href="#"
-        className="text-md md:text-l hover:text-deepblue-200 transition-colors duration-300 hover:before:scale-x-100 hover:before:origin-left relative before:w-full before:h-1 before:origin-right before:transition-transform before:duration-300 before:scale-x-0 before:bg-deepblue-500 before:absolute before:left-0 before:-bottom-2 "
+        className="text-md md:text-l hover:text-deepblue-200 before:bg-deepblue-500 relative transition-colors duration-300 before:absolute before:-bottom-2 before:left-0 before:h-1 before:w-full before:origin-right before:scale-x-0 before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 "
       >
         {props.page}
       </a>
@@ -24,10 +24,10 @@ function NavbarItem(props) {
 
 export default function Navbar(props) {
   return (
-    <div className="flex h-16 max-md:justify-center items-center">
+    <div className="flex h-16 items-center max-md:justify-center">
       <NowListening />
 
-      <div className="flex space-x-8 h-full items-center text-gray-300">
+      <div className="flex h-full items-center space-x-8 text-gray-300">
         {props.pages?.map((page) => (
           <NavbarItem key={page} page={page} activePage={props.activePage} />
         ))}

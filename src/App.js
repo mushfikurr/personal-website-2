@@ -10,8 +10,8 @@ function App() {
   const [activePage, setActivePage] = useState("Home");
 
   return (
-    <div className="w-screen h-screen bg-darker-gray py-2 px-4 sm:py-12 sm:px-24 font-iAMono">
-      <div className="flex flex-col h-full">
+    <div className="bg-darker-gray font-iAMono h-screen w-screen px-4 py-2 sm:px-24 sm:py-12">
+      <div className="flex h-full flex-col">
         {/* Navbar */}
         <Navbar
           pages={pages}
@@ -19,8 +19,8 @@ function App() {
           setActivePage={setActivePage}
         />
 
-        <div className="flex-grow flex flex-col">
-          <div className="md:h-2/5">
+        <div className="flex flex-grow flex-col">
+          <div className="lg:h-2/5">
             <div className="flex h-full w-full">
               {/* Social Widget */}
               <Socials />
@@ -34,8 +34,8 @@ function App() {
           <div className="flex-grow">
             <div className="h-3/5">
               {/* Project title */}
-              <div className="flex items-end justify-center h-1/5">
-                <h2 className="text-gray-100 text-lg text-center">
+              <div className="flex h-1/5 items-end justify-center">
+                <h2 className="text-center text-lg text-gray-100">
                   Projects I've worked on
                 </h2>
               </div>
@@ -43,15 +43,15 @@ function App() {
                 <Projects />
               </div>
             </div>
-            <div className="flex items-end justify-center h-2/5">
-              <div className="hidden lg:block text-gray-200 bg-lighter-gray hover:bg-deepblue-500 transition ease-in-out hover:translate-y-1 cursor-pointer  duration-300 p-3 rounded-full">
+            <div className="flex h-2/5 items-end justify-center">
+              <div className="bg-lighter-gray hover:bg-deepblue-500 hidden cursor-pointer rounded-full p-3 text-gray-200 transition duration-300  ease-in-out hover:translate-y-1 md:block">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="w-4 h-4 text-gray-200"
+                  className="h-4 w-4 text-gray-200"
                 >
                   <path
                     strokeLinecap="round"
