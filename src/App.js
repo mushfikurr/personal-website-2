@@ -10,7 +10,7 @@ function App() {
   const [activePage, setActivePage] = useState("Home");
 
   return (
-    <div className="bg-darker-gray font-iAMono h-screen w-screen px-4 py-2 sm:px-24 sm:py-12">
+    <div className="h-screen w-screen bg-darker-gray px-4 py-2 font-iAMono sm:px-24 sm:py-12">
       <div className="flex h-full flex-col">
         {/* Navbar */}
         <Navbar
@@ -46,10 +46,10 @@ function App() {
             {/* Scroll button for bottom of page on screens larger than medium size. */}
             <div className="flex h-2/5 items-end justify-center">
               <div className="group hidden transform-gpu cursor-pointer items-center py-4 md:flex">
-                <p className="group-hover:text-deepblue-100 mr-2 h-full w-full text-xs text-gray-200 transition duration-300 ease-in-out group-hover:translate-y-1">
+                <p className="mr-2 h-full w-full text-xs text-gray-200 transition duration-300 ease-in-out group-hover:translate-y-1 group-hover:text-deepblue-100">
                   See more!
                 </p>
-                <div className="bg-lighter-gray group-hover:bg-deepblue-500 rounded-full p-3 text-gray-200 transition duration-300 ease-in-out group-hover:translate-y-1">
+                <div className="rounded-full bg-lighter-gray p-3 text-gray-200 transition duration-300 ease-in-out group-hover:translate-y-1 group-hover:bg-deepblue-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
