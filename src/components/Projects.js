@@ -1,6 +1,6 @@
 function Project(props) {
   return (
-    <div className="bg-lighter-gray rounded-xl px-6 py-4 text-sm transition duration-300 ease-in-out hover:-translate-y-1 hover:drop-shadow-md">
+    <div className="bg-lighter-gray transform-gpu rounded-xl px-6 py-4 text-sm transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:drop-shadow-lg">
       <div className="mb-2 flex h-full w-full flex-col">
         <div className="flex-grow">
           <p className="font-medium ">{props.title || "project-title"}</p>
