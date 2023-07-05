@@ -24,13 +24,15 @@ function NavbarItem(props) {
 
 export default function Navbar(props) {
   return (
-    <div className="flex h-16 items-center max-md:justify-center">
-      <NowListening />
+    <div className="font-iAMono bg-darker-gray fixed z-50 mx-4 my-2 h-20 w-[calc(100vw-(theme(spacing.24)*2))] bg-opacity-90 backdrop-blur-sm sm:mx-24 sm:my-12">
+      <div className="flex h-full w-full items-center max-md:justify-center">
+        <NowListening />
 
-      <div className="flex h-full items-center space-x-8 text-gray-300">
-        {props.pages?.map((page) => (
-          <NavbarItem key={page} page={page} activePage={props.activePage} />
-        ))}
+        <div className="flex h-full items-center space-x-8 text-gray-300">
+          {props.pages?.map((page) => (
+            <NavbarItem key={page} page={page} activePage={props.activePage} />
+          ))}
+        </div>
       </div>
     </div>
   );

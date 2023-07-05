@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "iAWriterMono";
-    src: url("../public/fonts/iA\ Writer\ Mono/iAWriterMonoV.ttf");
+  font-family: "iAWriterMono";
+  src: url("../public/fonts/iA\ Writer\ Mono/iAWriterMonoV.ttf");
+}
+
+body {
+  background-color: theme("colors.darker-gray");
 }
