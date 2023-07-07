@@ -4,9 +4,51 @@
 
 @font-face {
   font-family: "iAWriterMono";
-  src: url("../public/fonts/iA\ Writer\ Mono/iAWriterMonoV.ttf");
+  src: url("../public/fonts/iA\ Writer\ Mono/iAWriterMonoS-Regular.woff2");
+}
+@font-face {
+  font-family: "iAWriterMono";
+  src: url("../public/fonts/iA\ Writer\ Mono/iAWriterMonoS-BoldItalic.woff2");
+  font-weight: bold;
+  font-style: italic, oblique;
+}
+@font-face {
+  font-family: "iAWriterMono";
+  src: url("../public/fonts/iA\ Writer\ Mono/iAWriterMonoS-Bold.woff2");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "iAWriterMono";
+  src: url("../public/fonts/iA\ Writer\ Mono/iAWriterMonoS-Italic.woff2");
+  font-style: italic;
 }
 
 body {
   background-color: theme("colors.darker-gray");
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: theme("colors.darker-gray");
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: theme(colors.lighter-gray);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.deepblue.500");
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
 }
