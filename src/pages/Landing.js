@@ -1,9 +1,25 @@
 import Header from "../components/Header";
 import Projects from "../components/Projects";
+import { useRef, useEffect } from "react";
+import { useIsVisible } from "../Hooks";
 
-export default function Landing() {
+const Landing = (props) => {
+  const scrollProjectsIntoView = () => {
+    props.projectsRef.current.scrollIntoView();
+  };
+
+  const ref = useRef();
+  const isVisible = useIsVisible(ref);
+
+  useEffect(() => {
+    props.setActivePage("Home");
+  }, [isVisible]);
+
   return (
-    <div className="bg-darker-gray font-iAMono h-screen px-4 py-2 sm:px-24 sm:py-12">
+    <div
+      ref={ref}
+      className="bg-darker-gray font-iAMono h-screen px-4 py-2 sm:px-24 sm:py-12"
+    >
       <div className="flex h-full flex-col">
         <div className="flex flex-grow flex-col">
           {/* Header */}
@@ -30,9 +46,14 @@ export default function Landing() {
 
             {/* Scroll button for bottom of page on screens larger than medium size. */}
             <div className="flex h-2/5 items-end justify-center">
-              <div className="group hidden transform-gpu cursor-pointer items-center py-4 md:flex">
+              <div
+                className="group hidden transform-gpu cursor-pointer items-center py-4 md:flex"
+                onClick={() => {
+                  scrollProjectsIntoView();
+                }}
+              >
                 <p className="group-hover:text-deepblue-100 mr-2 h-full w-full text-xs text-gray-200 transition duration-300 ease-in-out group-hover:translate-y-1">
-                  See more!
+                  Discover my story!
                 </p>
                 <div className="bg-lighter-gray group-hover:bg-deepblue-500 rounded-full p-3 text-gray-200 transition duration-300 ease-in-out group-hover:translate-y-1">
                   <svg
@@ -57,4 +78,6 @@ export default function Landing() {
       </div>
     </div>
   );
-}
+};
+
+export default Landing;

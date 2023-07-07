@@ -4,7 +4,7 @@ const allProjects = [
   {
     title: "joiner",
     description:
-      "An online video collaboration platform allowing users to cut, merge, and compile video together synchronously.",
+      "An online video collaboration application allowing users to cut, merge, and compile video together synchronously.",
     languages: ["javascript", "html", "css"],
     techstack: ["react", "electron", "tailwind", "nodejs", "socketio"],
   },
@@ -20,7 +20,7 @@ const allProjects = [
 function Project(props) {
   const renderIcon = (socialName) => {
     return (
-      <span className="">
+      <span className="flex-initial">
         <PopoverIcon
           socialName={socialName}
           preferredPositions={["bottom", "top", "right", "left"]}
@@ -33,7 +33,7 @@ function Project(props) {
   };
 
   return (
-    <div className="bg-lighter-gray transform-gpu rounded-xl px-6 py-4 text-sm transition-shadow duration-300 ease-in-out hover:drop-shadow-xl">
+    <div className="bg-lighter-gray transform-gpu rounded-xl px-6 py-4 text-sm transition duration-300 ease-in-out hover:drop-shadow-xl">
       <div className="mb-2 flex h-full w-full flex-col">
         <div className="flex-grow">
           <p className="font-medium ">{props.title || "project-title"}</p>
@@ -46,13 +46,13 @@ function Project(props) {
         <div className="align-end flex justify-end">
           <div className="flex flex-grow space-x-4">
             {/* Languages */}
-            <div className="flex h-full items-center space-x-1">
+            <div className="flex h-full items-center space-x-1 overflow-x-auto">
               {props.languages?.map((language) => {
                 return renderIcon(language);
               })}
             </div>
             {/* Tech stack (Framworks, etc) */}
-            <div className="flex h-full items-center space-x-1">
+            <div className="flex h-full items-center space-x-1 overflow-x-auto">
               {props.techstack?.map((techstack) => {
                 return renderIcon(techstack);
               })}

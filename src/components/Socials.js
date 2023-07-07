@@ -1,6 +1,4 @@
-import { Popover } from "react-tiny-popover";
-import { Github, Twitter, Discord, Icon } from "./Icons";
-import { useState } from "react";
+import { Icon } from "./Icons";
 
 export default function Socials() {
   const socialsToRender = ["github", "twitter", "discord"];
