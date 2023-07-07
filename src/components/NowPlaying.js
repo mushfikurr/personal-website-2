@@ -18,35 +18,17 @@ const ClickRefreshWrapper = (props) => {
 function CoverImage(props) {
   if (props.loaded) {
     // Loaded Status
-    if (props.active) {
-      // Currently listening
-      return (
-        <ClickRefreshWrapper action={props.reload}>
-          <div className="inline flex-shrink-0 filter transition-all duration-300 hover:shadow-inner hover:brightness-125">
-            <img
-              className="mr-4 h-16 w-16 flex-shrink-0 rounded-full outline outline-green-500"
-              width="16"
-              height="16"
-              src={props.imageUrl}
-            />
-          </div>
-        </ClickRefreshWrapper>
-      );
-    } else {
-      // Not currently listening
-      return (
-        <ClickRefreshWrapper action={props.reload}>
-          <div className="inline flex-shrink-0 filter transition-all duration-300 hover:shadow-inner hover:brightness-75">
-            <img
-              className="outline-lighter-gray mr-4 h-16 w-16 flex-shrink-0 rounded-full outline"
-              width="16"
-              height="16"
-              src={props.imageUrl}
-            />
-          </div>
-        </ClickRefreshWrapper>
-      );
-    }
+    const style = `mr-4 h-16 w-16 flex-shrink-0 rounded-full outline ${
+      props.active ? "outline-green-500" : "outline-darker-gray"
+    }`;
+
+    return (
+      <ClickRefreshWrapper action={props.reload}>
+        <div className="inline flex-shrink-0 filter transition-all duration-300 hover:shadow-inner hover:brightness-125">
+          <img className={style} width="16" height="16" src={props.imageUrl} />
+        </div>
+      </ClickRefreshWrapper>
+    );
   } else {
     // Loading current track
     return (
@@ -75,7 +57,7 @@ export default function NowListening() {
         timer = setTimeout(() => {
           setCurrentSong(resJson.recenttracks.track[0]);
           setHasLoadedSong(true);
-        }, 1000);
+        }, 600);
       })
       .catch((err) => {
         console.log(err);
