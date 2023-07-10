@@ -2,18 +2,17 @@ import { useState, useEffect, useRef } from "react";
 import Navbar from "./components/Navbar";
 import Socials from "./components/Socials";
 import Landing from "./pages/Landing";
-import { useIsVisible } from "./Hooks";
-
-const pages = ["Home", "About", "Contact"];
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   const [activePage, setActivePage] = useState("Home");
-  const projectsRef = useRef();
-  const isVisible = useIsVisible(projectsRef);
 
-  useEffect(() => {
-    setActivePage("About");
-  }, [isVisible]);
+  const pages = [
+    { title: "Home", ref: useRef() },
+    { title: "About", ref: useRef() },
+    { title: "Contact", ref: useRef() },
+  ];
 
   return (
     <>
@@ -24,11 +23,14 @@ function App() {
       />
       <Socials />
 
-      <Landing setActivePage={setActivePage} projectsRef={projectsRef} />
-      <div
-        ref={projectsRef}
-        className="bg-darker-gray font-iAMono h-screen px-4 py-2 sm:px-24 sm:py-12"
-      ></div>
+      {/* Passing down ref of next section for the scroll into view button. */}
+      <Landing
+        ref={pages[0].ref}
+        setActivePage={setActivePage}
+        aboutRef={pages[1].ref}
+      />
+      <About ref={pages[1].ref} setActivePage={setActivePage} />
+      <Contact ref={pages[2].ref} setActivePage={setActivePage} />
     </>
   );
 }
