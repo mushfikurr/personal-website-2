@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useInterval } from "../Hooks";
 
 const ENDPOINT = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=mvshy&api_key=${process.env.REACT_APP_LASTFM_KEY}&format=json`;
 
@@ -33,7 +34,7 @@ function CoverImage(props) {
     // Loading current track
     return (
       <div
-        className="border-cod-gray-800 mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        className="border-cod-gray-700 mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
         role="status"
       >
         <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
@@ -80,7 +81,7 @@ export default function NowListening() {
                 ? "Currently listening to..."
                 : "Last listened to..."}
             </p>
-            <p className="text-cod-gray-100 -mt-[4px] text-sm">
+            <p className="text-cod-gray-100 -mt-[3px] text-sm">
               {currentSong?.artist["#text"]} - {currentSong?.name}
             </p>
           </div>
@@ -103,6 +104,10 @@ export default function NowListening() {
     getCurrentSong();
     return () => clearTimeout(timer);
   }, []);
+
+  useInterval(() => {
+    getCurrentSong();
+  }, 60000);
 
   return (
     <div className="hidden flex-grow items-center md:flex">

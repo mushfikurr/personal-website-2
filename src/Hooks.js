@@ -1,22 +1,23 @@
-import { useEffect, useState, useRef } from "react";
-
 /**
- * Hook from José Miguel Álvarez Vañó on StackOverflow
- * https://dev.to/jmalvarez/check-if-an-element-is-visible-with-react-hooks-27h8
+ * Hook from GavKilbride on StackOverflow
+ * https://stackoverflow.com/questions/46140764/polling-api-every-x-seconds-with-react
  */
-export function useIsVisible(ref) {
-  const [isIntersecting, setIntersecting] = useState(false);
+import React, { useState, useEffect, useRef } from "react";
+
+export const useInterval = (callback, delay) => {
+  const savedCallback = useRef();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) =>
-      setIntersecting(entry.isIntersecting)
-    );
+    savedCallback.current = callback;
+  }, [callback]);
 
-    observer.observe(ref.current);
-    return () => {
-      observer.disconnect();
-    };
-  }, [ref]);
-
-  return isIntersecting;
-}
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      const id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+};

@@ -10,7 +10,7 @@ const allProjects = [
   },
   {
     title: "govee-controller",
-    description: "A React web app for controlling Govee smart devices!",
+    description: "A web app for controlling Govee smart devices!",
     languages: ["javascript", "html", "css"],
     techstack: ["react", "material"],
   },
