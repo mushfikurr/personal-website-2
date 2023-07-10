@@ -25,7 +25,7 @@ function Project(props) {
           socialName={socialName}
           preferredPositions={["bottom", "top", "right", "left"]}
           classNames={
-            "h-4 w-4 cursor-pointer text-gray-200 transition-colors duration-300 ease-in-out hover:text-deepblue-500"
+            "h-4 w-4 cursor-pointer text-cod-gray-200 transition-colors duration-300 ease-in-out hover:text-deepblue-500"
           }
         />
       </span>
@@ -33,11 +33,13 @@ function Project(props) {
   };
 
   return (
-    <div className="bg-lighter-gray transform-gpu rounded-xl px-6 py-4 text-sm transition duration-300 ease-in-out hover:drop-shadow-xl">
-      <div className="mb-2 flex h-full w-full flex-col">
+    <div className="bg-cod-gray-900 transform-gpu rounded-xl px-6 py-4 text-sm transition duration-300 ease-in-out hover:drop-shadow-xl">
+      <div className="mb-1 flex h-full w-full flex-col">
         <div className="flex-grow">
-          <p className="font-medium ">{props.title || "project-title"}</p>
-          <p className="max-w-prose text-xs text-gray-400">
+          <p className="text-cod-gray-50 mb-1 font-medium">
+            {props.title || "project-title"}
+          </p>
+          <p className="text-cod-gray-400 max-w-prose text-xs">
             {props.description ||
               "Lorem ipsum sit dolor amet Lorem ipsum sit dolor amet Lorem ipsum \
             sit dolor amet."}
@@ -60,7 +62,7 @@ function Project(props) {
           </div>
           <div>
             <button className="bg-darkgray hover:bg-deepblue-500 h-full rounded-md px-3 py-2 text-xs transition-colors">
-              <span className="flex space-x-1 text-gray-200">
+              <span className="text-cod-gray-200 flex space-x-1">
                 {/* {openIcon()} */}
                 <p>Open</p>
               </span>
@@ -74,7 +76,7 @@ function Project(props) {
 
 export default function Projects() {
   return (
-    <div className="h-full w-full px-20 py-4 text-gray-100">
+    <div className="text-cod-gray-100 h-full w-full px-20 py-4">
       <div className="grid gap-8 lg:grid-cols-3">
         {allProjects.map((project) => (
           <Project {...project} />

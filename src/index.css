@@ -30,16 +30,18 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
+  border-radius: 9999px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: theme("colors.darker-gray");
+  background: theme("colors.cod-gray.900");
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: theme(colors.lighter-gray);
+  background: theme(colors.cod-gray.700);
+  border-radius: 9999px;
 }
 
 /* Handle on hover */

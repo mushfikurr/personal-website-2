@@ -19,7 +19,7 @@ function CoverImage(props) {
   if (props.loaded) {
     // Loaded Status
     const style = `mr-4 h-16 w-16 flex-shrink-0 rounded-full outline ${
-      props.active ? "outline-green-500" : "outline-darker-gray"
+      props.active ? "outline-green-500" : "outline-cod-gray-900"
     }`;
 
     return (
@@ -33,7 +33,7 @@ function CoverImage(props) {
     // Loading current track
     return (
       <div
-        className="border-lighter-gray mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        className="border-cod-gray-800 mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
         role="status"
       >
         <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
@@ -75,12 +75,12 @@ export default function NowListening() {
             reload={getCurrentSong}
           />
           <div className="flex max-w-md flex-grow flex-col">
-            <p className="text-sm text-gray-300">
+            <p className="text-cod-gray-300 text-sm">
               {currentSong["@attr"]?.nowplaying
                 ? "Currently listening to..."
                 : "Last listened to..."}
             </p>
-            <p className="-mt-[4px] text-sm text-gray-400">
+            <p className="text-cod-gray-100 -mt-[4px] text-sm">
               {currentSong?.artist["#text"]} - {currentSong?.name}
             </p>
           </div>
@@ -92,7 +92,7 @@ export default function NowListening() {
         <>
           <CoverImage loaded={hasLoadedSong} />
           <div className="flex flex-grow flex-col">
-            <p className="text-sm text-gray-300"></p>
+            <p className="text-cod-gray-300 text-sm"></p>
           </div>
         </>
       );

@@ -10,7 +10,21 @@ module.exports = {
       },
       colors: {
         "lighter-gray": "#212121",
+        "scrollbar-gray": "#363636",
         "darker-gray": "#171717",
+        "cod-gray": {
+          50: "#fafafa",
+          100: "#f4f4f5",
+          200: "#e4e4e7",
+          300: "#d4d4d8",
+          400: "#a1a1aa",
+          500: "#71717a",
+          600: "#52525b",
+          700: "#3f3f46",
+          800: "#27272a",
+          900: "#18181b",
+          950: "#09090b",
+        },
         deepblue: {
           DEFAULT: "#738CD5",
           50: "#FFFFFF",
