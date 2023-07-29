@@ -10,11 +10,11 @@ const Landing = forwardRef((props, ref) => {
 
   return (
     <Page setActivePage={props.setActivePage} ref={ref} title="Home">
-      <div className="bg-cod-gray-950 font-iAMono h-screen px-4 py-2 sm:px-24 sm:py-12">
+      <div className="font-iAMono h-screen px-8 py-2 sm:px-24 sm:py-12">
         <div className="flex h-full flex-col">
           <div className="flex flex-grow flex-col">
             {/* Header */}
-            <div className="lg:h-2/5">
+            <div className="md:h-2/5">
               <div className="flex h-full w-full">
                 <Header />
               </div>
@@ -22,10 +22,10 @@ const Landing = forwardRef((props, ref) => {
 
             <div className="flex-grow">
               {/* Projects */}
-              <div className="h-3/5">
+              <div className="h-4/5">
                 {/* Project title */}
                 <div className="flex h-1/5 items-end justify-center">
-                  <h2 className="text-cod-gray-100 text-center text-lg font-medium">
+                  <h2 className="text-cod-gray-100 mb-2 text-center text-lg font-medium">
                     Projects I've worked on
                   </h2>
                 </div>
@@ -36,14 +36,14 @@ const Landing = forwardRef((props, ref) => {
               </div>
 
               {/* Scroll button for bottom of page on screens larger than medium size. */}
-              <div className="flex h-2/5 items-end justify-center">
+              <div className="flex h-1/6 items-end justify-end lg:justify-center">
                 <div
-                  className="group hidden transform-gpu cursor-pointer items-center py-4 md:flex"
+                  className="group flex transform-gpu cursor-pointer items-center py-4"
                   onClick={() => {
                     scrollProjectsIntoView();
                   }}
                 >
-                  <p className="group-hover:text-deepblue-100 text-cod-gray-200 mr-2 h-full w-full text-xs transition duration-300 ease-in-out group-hover:translate-y-1">
+                  <p className="group-hover:text-deepblue-100 text-cod-gray-200 mr-2 hidden h-full w-full text-xs transition duration-300 ease-in-out group-hover:translate-y-1 lg:block">
                     Discover my story!
                   </p>
                   <div className="bg-cod-gray-900 group-hover:bg-deepblue-500 text-cod-gray-200 rounded-full p-3 transition duration-300 ease-in-out group-hover:translate-y-1">
