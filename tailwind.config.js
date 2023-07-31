@@ -7,6 +7,7 @@ module.exports = {
       },
       fontFamily: {
         iAMono: ["iAWriterMono", "monospace"],
+        iAWriterQuattro: ["iAWriterQuattro", "sans-serif"],
       },
       colors: {
         "lighter-gray": "#212121",
@@ -39,6 +40,19 @@ module.exports = {
           900: "#182650",
           950: "#111C3A",
         },
+      },
+      backgroundPosition: {
+        cursor: "calc(100vw - 100%) calc(100vh - 100%)",
+      },
+      backgroundSize: {
+        200: "200% 200%",
+      },
+      gradientColorStops: {
+        "custom-gradient": ["colors[cod-grey-950]", "colors[cod-grey-800]"], // Use the custom colors in the gradient definition
+      },
+      cursor: {
+        gradient:
+          "radial-gradient(circle at var(--tw-cursor-x) var(--tw-cursor-y), colors[cod-grey-950], colors[cod-grey-800])", // Use the custom colors in the cursor definition
       },
     },
   },

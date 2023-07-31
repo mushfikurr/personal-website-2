@@ -15,7 +15,7 @@ function App() {
   ];
 
   return (
-    <>
+    <div className="bg-cod-gray-950">
       <Navbar
         pages={pages}
         activePage={activePage}
@@ -31,7 +31,7 @@ function App() {
       />
       <About ref={pages[1].ref} setActivePage={setActivePage} />
       <Contact ref={pages[2].ref} setActivePage={setActivePage} />
-    </>
+    </div>
   );
 }
 

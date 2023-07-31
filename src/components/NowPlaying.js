@@ -33,10 +33,7 @@ function CoverImage(props) {
   } else {
     // Loading current track
     return (
-      <div
-        className="border-cod-gray-700 mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-        role="status"
-      >
+      <div className="border-cod-gray-400 mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]">
         <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
       </div>
     );
@@ -75,7 +72,7 @@ export default function NowListening() {
             loaded={hasLoadedSong}
             reload={getCurrentSong}
           />
-          <div className="flex max-w-md flex-grow flex-col">
+          <div className="flex flex-grow flex-col truncate">
             <p className="text-cod-gray-300 text-sm">
               {currentSong["@attr"]?.nowplaying
                 ? "Currently listening to..."

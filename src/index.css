@@ -23,9 +23,32 @@
   font-style: italic;
 }
 
-body {
-  background-color: theme("colors.darker-gray");
+/* Italic */
+
+@font-face {
+  font-family: "iAWriterQuattro";
+  src: url("../public/fonts/iA\ Writer\ Quattro\ V/iAWriterQuattroS-Regular.woff2");
 }
+@font-face {
+  font-family: "iAWriterQuattro";
+  src: url("../public/fonts/iA\ Writer\ Quattro\ V/iAWriterQuattroS-BoldItalic.woff2");
+  font-weight: bold;
+  font-style: italic, oblique;
+}
+@font-face {
+  font-family: "iAWriterQuattro";
+  src: url("../public/fonts/iA\ Writer\ Quattro\ V/iAWriterQuattroS-Bold.woff2");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "iAWriterQuattro";
+  src: url("../public/fonts/iA\ Writer\ Quattro\ V/iAWriterQuattroS-Italic.woff2");
+  font-style: italic;
+}
+
+/* body {
+  background-color: theme("colors.cod-gray.950");
+} */
 
 /* width */
 ::-webkit-scrollbar {

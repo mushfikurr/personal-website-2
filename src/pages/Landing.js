@@ -25,7 +25,7 @@ const Landing = forwardRef((props, ref) => {
               <div className="h-4/5">
                 {/* Project title */}
                 <div className="flex h-1/5 items-end justify-center">
-                  <h2 className="text-cod-gray-100 mb-2 text-center text-lg font-medium">
+                  <h2 className="text-cod-gray-100 md:text-md mb-2 text-center text-sm font-medium">
                     Projects I've worked on
                   </h2>
                 </div>
@@ -43,7 +43,7 @@ const Landing = forwardRef((props, ref) => {
                     scrollProjectsIntoView();
                   }}
                 >
-                  <p className="group-hover:text-deepblue-100 text-cod-gray-200 mr-2 hidden h-full w-full text-xs transition duration-300 ease-in-out group-hover:translate-y-1 lg:block">
+                  <p className="group-hover:text-deepblue-300 text-cod-gray-200 mr-2 hidden h-full w-full text-sm transition duration-300 ease-in-out group-hover:translate-y-1 lg:block">
                     Discover my story!
                   </p>
                   <div className="bg-cod-gray-900 group-hover:bg-deepblue-500 text-cod-gray-200 rounded-full p-3 transition duration-300 ease-in-out group-hover:translate-y-1">

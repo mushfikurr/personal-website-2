@@ -1,4 +1,4 @@
-import { Icon } from "./Icons";
+import { SocialIcon } from "./Icons";
 
 export default function Socials() {
   const socialsToRender = ["github", "twitter", "linkedin", "discord"];
@@ -12,7 +12,7 @@ export default function Socials() {
               key={social}
               className="hover:text-deepblue-500 transition-colors duration-300 hover:cursor-pointer"
             >
-              <Icon socialName={social}></Icon>
+              <SocialIcon socialName={social} />
             </li>
           );
         })}

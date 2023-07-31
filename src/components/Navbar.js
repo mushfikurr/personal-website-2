@@ -17,7 +17,7 @@ function NavbarItem(props) {
         onClick={() => {
           travelToPage();
         }}
-        className="text-md md:text-l hover:text-deepblue-200 before:bg-deepblue-500 relative cursor-pointer transition-colors duration-300 before:absolute before:-bottom-2 before:left-0 before:h-1 before:w-full before:origin-right before:scale-x-0 before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 "
+        className="text-md md:text-l hover:text-deepblue-300 before:bg-deepblue-500 relative cursor-pointer transition-colors duration-300 before:absolute before:-bottom-2 before:left-0 before:h-1 before:w-full before:origin-right before:scale-x-0 before:transition-transform before:duration-300 hover:before:origin-left hover:before:scale-x-100 "
       >
         {props.title}
       </span>

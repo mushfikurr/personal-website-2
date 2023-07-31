@@ -64,7 +64,7 @@ function ProjectCollapsable(props) {
 
   const projectTitleClassnames = `${
     isOpen ? "text-deepblue-500" : "text-cod-gray-50"
-  } group-hover:text-deepblue-200 flex-grow text-sm font-medium transition duration-300 ease-in-out`;
+  } group-hover:text-deepblue-300 flex-grow text-sm font-medium transition duration-300 ease-in-out`;
 
   const projectCardClassnames = `bg-cod-gray-900 group transform-gpu rounded-xl px-4 py-4 text-sm transition-all duration-500 ease-in-out hover:cursor-pointer hover:drop-shadow-xl overflow-hidden`;
 
