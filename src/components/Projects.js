@@ -32,6 +32,7 @@ const allProjects = [
 function ProjectCollapsable(props) {
   const [isOpen, setIsOpen] = useState(false);
   const contentRef = useRef();
+  const titleRef = useRef();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -53,8 +54,10 @@ function ProjectCollapsable(props) {
 
   const renderChevron = () => {
     const classNames = `${
-      isOpen ? "text-deepblue-500" : "text-cod-gray-50"
-    } transition duration-300 ease-in-out group-hover:text-deepblue-200 h-3 w-3`;
+      isOpen
+        ? "text-deepblue-500 group-hover:text-deepblue-500"
+        : "text-cod-gray-50 group-hover:text-deepblue-300"
+    } transition duration-300 ease-in-out h-3 w-3`;
     return isOpen ? (
       <ChevronUp classNames={classNames} />
     ) : (
@@ -63,8 +66,10 @@ function ProjectCollapsable(props) {
   };
 
   const projectTitleClassnames = `${
-    isOpen ? "text-deepblue-500" : "text-cod-gray-50"
-  } group-hover:text-deepblue-300 flex-grow text-sm font-medium transition duration-300 ease-in-out`;
+    isOpen
+      ? "text-deepblue-500 group-hover:text-deepblue-500"
+      : "text-cod-gray-50 group-hover:text-deepblue-300"
+  }  flex-grow text-sm font-medium transition duration-300 ease-in-out`;
 
   const projectCardClassnames = `bg-cod-gray-900 group transform-gpu rounded-xl px-4 py-4 text-sm transition-all duration-500 ease-in-out hover:cursor-pointer hover:drop-shadow-xl overflow-hidden`;
 
@@ -78,7 +83,10 @@ function ProjectCollapsable(props) {
     >
       <div className="flex flex-col">
         {/* Title that is always shown */}
-        <div className="flex flex-grow items-center overflow-hidden text-ellipsis">
+        <div
+          ref={titleRef}
+          className="flex flex-grow items-center overflow-hidden text-ellipsis"
+        >
           <p className={projectTitleClassnames}>
             {props.title || "project-title"}
           </p>
@@ -130,8 +138,8 @@ function ProjectCollapsable(props) {
  */
 export default function Projects() {
   return (
-    <div className="flex h-full w-full justify-center px-20 pt-2 sm:block">
-      <div className="h-full select-none space-y-4 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
+    <div className="flex h-full w-full justify-center px-48 py-2 sm:mt-2 sm:block">
+      <div className="h-full select-none space-y-4 lg:grid lg:h-auto lg:grid-cols-3 lg:justify-center lg:gap-x-8 lg:gap-y-4 lg:space-y-0">
         {allProjects.map((project) => (
           <ProjectCollapsable key={project.title} {...project} />
         ))}

@@ -27,7 +27,7 @@ function NavbarItem(props) {
 
 export default function Navbar(props) {
   return (
-    <div className="font-iAMono bg-cod-gray-950 fixed z-50 mx-4 my-2 h-20 w-[calc(100vw-(theme(spacing.4)*2))] bg-opacity-90 backdrop-blur-sm sm:mx-24 sm:my-12 sm:w-[calc(100vw-(theme(spacing.24)*2))]">
+    <div className="font-iAMono bg-cod-gray-950 fixed z-50 h-20 w-screen flex-grow bg-opacity-90 backdrop-blur-sm sm:mx-24 sm:my-12 sm:h-20 sm:w-[calc(100vw-(theme(spacing.24)*2))]">
       <div className="flex h-full w-full items-center max-md:justify-center">
         <NowListening />
 

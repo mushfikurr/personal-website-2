@@ -14,6 +14,7 @@ const Page = forwardRef((props, ref) => {
 
   return (
     <div
+      className={props.classNames}
       ref={(el) => {
         if (ref) ref.current = el;
         if (scrollRef) scrollRef.current = el;

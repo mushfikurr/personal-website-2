@@ -10,60 +10,42 @@ const Landing = forwardRef((props, ref) => {
 
   return (
     <Page setActivePage={props.setActivePage} ref={ref} title="Home">
-      <div className="font-iAMono h-screen px-8 py-2 sm:px-24 sm:py-12">
-        <div className="flex h-full flex-col">
-          <div className="flex flex-grow flex-col">
-            {/* Header */}
-            <div className="md:h-2/5">
-              <div className="flex h-full w-full">
-                <Header />
-              </div>
-            </div>
-
-            <div className="flex-grow">
-              {/* Projects */}
-              <div className="h-4/5">
-                {/* Project title */}
-                <div className="flex h-1/5 items-end justify-center">
-                  <h2 className="text-cod-gray-100 md:text-md mb-2 text-center text-sm font-medium">
-                    Projects I've worked on
-                  </h2>
-                </div>
-
-                <div className="h-4/5">
-                  <Projects />
-                </div>
-              </div>
-
-              {/* Scroll button for bottom of page on screens larger than medium size. */}
-              <div className="flex h-1/6 items-end justify-end lg:justify-center">
-                <div
-                  className="group flex transform-gpu cursor-pointer items-center py-4"
-                  onClick={() => {
-                    scrollProjectsIntoView();
-                  }}
-                >
-                  <p className="group-hover:text-deepblue-300 text-cod-gray-200 mr-2 hidden h-full w-full text-sm transition duration-300 ease-in-out group-hover:translate-y-1 lg:block">
-                    Discover my story!
-                  </p>
-                  <div className="bg-cod-gray-900 group-hover:bg-deepblue-500 text-cod-gray-200 rounded-full p-3 transition duration-300 ease-in-out group-hover:translate-y-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={2}
-                      stroke="currentColor"
-                      className="text-cod-gray-200 h-4 w-4"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+      <div className="font-iAMono text-cod-gray-200 flex h-screen min-h-full flex-col">
+        <div class="flex h-2/4 flex-col items-center justify-center pt-20 text-3xl md:pt-32">
+          <Header />
+          <h5 className="py-1 text-base sm:px-48">
+            Recent projects I've worked on
+          </h5>
+        </div>
+        <div className="max-h-1/4 flex flex-grow flex-col items-center">
+          <Projects />
+        </div>
+        <div className="mt-2 h-auto">
+          {/* Scroll button for bottom of page on screens larger than medium size. */}
+          <div
+            className="group flex transform-gpu cursor-pointer items-center justify-center pb-10 sm:pb-12"
+            onClick={() => {
+              scrollProjectsIntoView();
+            }}
+          >
+            <p className="group-hover:text-deepblue-300 text-cod-gray-200 mr-2 hidden text-sm transition duration-300 ease-in-out group-hover:translate-y-1 lg:block">
+              Discover my story!
+            </p>
+            <div className="bg-cod-gray-900 group-hover:bg-deepblue-500 text-cod-gray-200 rounded-full p-3 transition duration-300 ease-in-out group-hover:translate-y-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="text-cod-gray-200 h-4 w-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"
+                />
+              </svg>
             </div>
           </div>
         </div>

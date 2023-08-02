@@ -1,5 +1,13 @@
-import { useEffect, useState } from "react";
+import { createRef, forwardRef, useEffect, useRef, useState } from "react";
 import { useInterval } from "../Hooks";
+import { ChevronRight, XMark } from "./Icons";
+
+/**
+ * TODO:
+ * - Add bounce effect on page load and maybe every 2 minutes for the now playing. []
+ * - When expanding the widget, allow a 'grace period' for when another poll can take place (prevents jarring change on expanding) []
+ * - Fix collapse/expand animation (?) []
+ */
 
 const ENDPOINT = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=mvshy&api_key=${process.env.REACT_APP_LASTFM_KEY}&format=json`;
 
@@ -16,7 +24,7 @@ const ClickRefreshWrapper = (props) => {
   );
 };
 
-function CoverImage(props) {
+const CoverImage = forwardRef((props, ref) => {
   if (props.loaded) {
     // Loaded Status
     const style = `mr-4 h-16 w-16 flex-shrink-0 rounded-full outline ${
@@ -33,12 +41,12 @@ function CoverImage(props) {
   } else {
     // Loading current track
     return (
-      <div className="border-cod-gray-400 mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]">
+      <div className="border-deepblue-500 mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]">
         <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
       </div>
     );
   }
-}
+});
 
 export default function NowListening() {
   let timer = null;
@@ -62,35 +70,67 @@ export default function NowListening() {
       });
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+  const trackDescRef = createRef();
+
   const renderSongAndImage = () => {
+    const toggleClassNames = `h-4 w-4 text-cod-gray-200 group-hover:text-deepblue-500 ${
+      isOpen ? "group-hover:translate-x-0" : "group-hover:translate-x-1"
+    } group-hover:cursor-pointer transition-all duration-300 ease-in-out`;
+    const buttonClassNames = `group cursor-pointer ${
+      isOpen ? "p-4" : "pl-0 pr-4 py-4"
+    }`;
+
     if (hasLoadedSong) {
       return (
-        <>
+        <div className="flex items-center">
           <CoverImage
             imageUrl={currentSong?.image[2]["#text"]}
             active={currentSong["@attr"]?.nowplaying}
             loaded={hasLoadedSong}
             reload={getCurrentSong}
           />
-          <div className="flex flex-grow flex-col truncate">
-            <p className="text-cod-gray-300 text-sm">
-              {currentSong["@attr"]?.nowplaying
-                ? "Currently listening to..."
-                : "Last listened to..."}
-            </p>
-            <p className="text-cod-gray-100 -mt-[3px] text-sm">
-              {currentSong?.artist["#text"]} - {currentSong?.name}
-            </p>
+          <div className="flex flex-grow flex-col overflow-hidden ">
+            {/* This div is to calculate the width of the track descriptions for collapse animation */}
+            <div
+              ref={trackDescRef}
+              className="transition-all duration-500 ease-in-out"
+              style={{
+                maxWidth: isOpen ? trackDescRef.current?.offsetWidth : 0,
+              }}
+            >
+              <p className="text-cod-gray-300 select-none text-sm">
+                {currentSong["@attr"]?.nowplaying
+                  ? "Currently listening to..."
+                  : "Last listened to..."}
+              </p>
+              <p className="text-cod-gray-100 -mt-[3px] text-sm">
+                {currentSong?.artist["#text"]} - {currentSong?.name}
+              </p>
+            </div>
           </div>
-        </>
+
+          <span
+            className={buttonClassNames}
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+          >
+            {isOpen ? (
+              <XMark classNames={toggleClassNames} />
+            ) : (
+              <ChevronRight classNames={toggleClassNames} />
+            )}
+          </span>
+        </div>
       );
     } else {
       // Fallback if no songs are pulled from API
       return (
         <>
           <CoverImage loaded={hasLoadedSong} />
-          <div className="flex flex-grow flex-col">
-            <p className="text-cod-gray-300 text-sm"></p>
+          <div className="flex flex-grow cursor-wait flex-col">
+            <p className="text-cod-gray-300 text-sm">Loading...</p>
           </div>
         </>
       );
