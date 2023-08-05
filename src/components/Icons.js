@@ -1,5 +1,5 @@
 import { Popover } from "react-tiny-popover";
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 /**
  * Icon paths from https://simpleicons.org/
  */
@@ -39,7 +39,7 @@ const PopoverContent = (props) => {
 };
 
 /** Icons from https://heroicons.com/ */
-export const ChevronDown = (props) => {
+export const ChevronDown = forwardRef((props, ref) => {
   const classNames = `${props.classNames}`;
   return (
     <svg
@@ -48,6 +48,7 @@ export const ChevronDown = (props) => {
       strokeWidth={3}
       stroke="currentColor"
       className={classNames}
+      ref={ref}
     >
       <path
         strokeLinecap="round"
@@ -56,7 +57,7 @@ export const ChevronDown = (props) => {
       />
     </svg>
   );
-};
+});
 
 export const XMark = (props) => {
   const classNames = `${props.classNames}`;

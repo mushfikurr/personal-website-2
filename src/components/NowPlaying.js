@@ -1,6 +1,7 @@
 import { createRef, forwardRef, useEffect, useRef, useState } from "react";
 import { useInterval } from "../Hooks";
 import { ChevronRight, XMark } from "./Icons";
+import { motion } from "framer-motion";
 
 /**
  * TODO:
@@ -33,7 +34,10 @@ const CoverImage = forwardRef((props, ref) => {
 
     return (
       <ClickRefreshWrapper action={props.reload}>
-        <div className="inline flex-shrink-0 filter transition-all duration-300 hover:shadow-inner hover:brightness-125">
+        <div
+          ref={ref}
+          className="inline flex-shrink-0 filter hover:shadow-inner hover:brightness-125"
+        >
           <img className={style} width="16" height="16" src={props.imageUrl} />
         </div>
       </ClickRefreshWrapper>
@@ -41,7 +45,10 @@ const CoverImage = forwardRef((props, ref) => {
   } else {
     // Loading current track
     return (
-      <div className="border-deepblue-500 mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]">
+      <div
+        ref={ref}
+        className="border-deepblue-500 mr-4 inline-block h-16 w-16 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+      >
         <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"></span>
       </div>
     );
@@ -76,39 +83,46 @@ export default function NowListening() {
   const renderSongAndImage = () => {
     const toggleClassNames = `h-4 w-4 text-cod-gray-200 group-hover:text-deepblue-500 ${
       isOpen ? "group-hover:translate-x-0" : "group-hover:translate-x-1"
-    } group-hover:cursor-pointer transition-all duration-300 ease-in-out`;
+    } group-hover:cursor-pointer`;
     const buttonClassNames = `group cursor-pointer ${
       isOpen ? "p-4" : "pl-0 pr-4 py-4"
     }`;
 
+    const MotionCoverImage = motion(CoverImage);
+
     if (hasLoadedSong) {
       return (
-        <div className="flex items-center">
-          <CoverImage
+        <motion.div className="flex items-center">
+          <MotionCoverImage
+            key={currentSong?.image[2]["#text"]}
             imageUrl={currentSong?.image[2]["#text"]}
             active={currentSong["@attr"]?.nowplaying}
             loaded={hasLoadedSong}
             reload={getCurrentSong}
           />
-          <div className="flex flex-grow flex-col overflow-hidden ">
-            {/* This div is to calculate the width of the track descriptions for collapse animation */}
-            <div
-              ref={trackDescRef}
-              className="transition-all duration-500 ease-in-out"
-              style={{
-                maxWidth: isOpen ? trackDescRef.current?.offsetWidth : 0,
-              }}
+          {isOpen && (
+            <motion.div
+              layout
+              className="flex flex-grow flex-col overflow-hidden"
             >
-              <p className="text-cod-gray-300 select-none text-sm">
-                {currentSong["@attr"]?.nowplaying
-                  ? "Currently listening to..."
-                  : "Last listened to..."}
-              </p>
-              <p className="text-cod-gray-100 -mt-[3px] text-sm">
-                {currentSong?.artist["#text"]} - {currentSong?.name}
-              </p>
-            </div>
-          </div>
+              <motion.div ref={trackDescRef} className="">
+                <motion.p
+                  layout
+                  className="text-cod-gray-300 select-none text-sm"
+                >
+                  {currentSong["@attr"]?.nowplaying
+                    ? "Currently listening to..."
+                    : "Last listened to..."}
+                </motion.p>
+                <motion.p
+                  layout
+                  className="text-cod-gray-100 -mt-[3px] text-sm"
+                >
+                  {currentSong?.artist["#text"]} - {currentSong?.name}
+                </motion.p>
+              </motion.div>
+            </motion.div>
+          )}
 
           <span
             className={buttonClassNames}
@@ -122,7 +136,7 @@ export default function NowListening() {
               <ChevronRight classNames={toggleClassNames} />
             )}
           </span>
-        </div>
+        </motion.div>
       );
     } else {
       // Fallback if no songs are pulled from API

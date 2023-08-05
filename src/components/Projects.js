@@ -1,5 +1,6 @@
 import { PopoverIcon, ChevronDown, ChevronUp } from "./Icons";
-import { useState, useRef } from "react";
+import { useState, useRef, forwardRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const allProjects = [
   {
@@ -29,7 +30,7 @@ const allProjects = [
  * Offset is hardcoded for now but is equal to theme.spacing(4) * 3
  */
 
-function ProjectCollapsable(props) {
+const ProjectCollapsable = forwardRef((props, ref) => {
   const [isOpen, setIsOpen] = useState(false);
   const contentRef = useRef();
   const titleRef = useRef();
@@ -69,7 +70,7 @@ function ProjectCollapsable(props) {
     isOpen
       ? "text-deepblue-500 group-hover:text-deepblue-500"
       : "text-cod-gray-50 group-hover:text-deepblue-300"
-  }  flex-grow text-sm font-medium transition duration-300 ease-in-out`;
+  }  flex-grow text-sm font-medium transition-colors duration-300 ease-in-out`;
 
   const projectCardClassnames = `bg-cod-gray-900 group transform-gpu rounded-xl px-4 py-4 text-sm transition-all duration-500 ease-in-out hover:cursor-pointer hover:drop-shadow-xl overflow-hidden`;
 
@@ -80,6 +81,7 @@ function ProjectCollapsable(props) {
       onClick={() => {
         handleClick();
       }}
+      ref={ref}
     >
       <div className="flex flex-col">
         {/* Title that is always shown */}
@@ -131,19 +133,50 @@ function ProjectCollapsable(props) {
       </div>
     </div>
   );
-}
+});
 
 /**
  * Display all projects in a grid structure.
  */
 export default function Projects() {
+  const allProjectsAnimProps = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const projectAnimProps = {
+    hidden: { opacity: 0, y: 15 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+  };
+
+  const MotionProjectCollapsable = motion(ProjectCollapsable);
+
   return (
-    <div className="flex h-full w-full justify-center px-48 py-2 sm:mt-2 sm:block">
-      <div className="h-full select-none space-y-4 lg:grid lg:h-auto lg:grid-cols-3 lg:justify-center lg:gap-x-8 lg:gap-y-4 lg:space-y-0">
-        {allProjects.map((project) => (
-          <ProjectCollapsable key={project.title} {...project} />
+    <div className="sm:block md:px-32 lg:px-64">
+      <motion.div
+        variants={allProjectsAnimProps}
+        initial="hidden"
+        animate="show"
+        className="h-full select-none space-y-4 lg:grid lg:h-auto lg:grid-cols-3 lg:justify-center lg:gap-x-8 lg:gap-y-4 lg:space-y-0"
+      >
+        {allProjects.map((project, i) => (
+          <MotionProjectCollapsable
+            variants={projectAnimProps}
+            key={project.title}
+            {...project}
+          />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
