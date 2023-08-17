@@ -9,6 +9,12 @@ module.exports = {
         iAMono: ["iAWriterMono", "monospace"],
         iAWriterQuattro: ["iAWriterQuattro", "sans-serif"],
       },
+      dropShadow: {
+        glow: [
+          "0 0px 20px rgba(255,255, 255, 0.35)",
+          "0 0px 65px rgba(255, 255,255, 0.2)",
+        ],
+      },
       colors: {
         "lighter-gray": "#212121",
         "scrollbar-gray": "#363636",
@@ -56,5 +62,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };

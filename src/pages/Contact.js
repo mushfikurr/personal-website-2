@@ -3,9 +3,6 @@ import { socialsToRender } from "../components/Socials";
 import Page from "./PageLayout";
 import { SocialIcon } from "../components/Icons";
 
-// TODO:
-// Make responsive []
-
 const Contact = forwardRef((props, ref) => {
   return (
     <Page
@@ -15,7 +12,7 @@ const Contact = forwardRef((props, ref) => {
       setActivePage={props.setActivePage}
     >
       <div className={`mt-8 flex flex-grow flex-col items-center md:mt-20`}>
-        <div className="flex max-w-prose flex-grow  flex-col justify-center">
+        <div className="flex max-w-prose flex-grow flex-col md:mt-28">
           <div className="max-w-fit">
             <p className="text-deepblue-500 mb-1 text-3xl font-bold lg:text-3xl">
               Contact.
@@ -32,7 +29,7 @@ const Contact = forwardRef((props, ref) => {
           </div>
 
           <div className="text-deepblue-500 text-2xl">
-            <label className="text-cod-gray-200 pl-1 text-sm md:text-lg">
+            <label className="text-cod-gray-200 w-full pl-1 text-sm md:text-lg">
               Name
             </label>
             <input className="bg-cod-gray-900  hover:bg-cod-gray-800 focus:bg-cod-gray-800 mb-2 mt-1 w-full rounded-md p-3 transition duration-300 ease-in-out focus:outline-none"></input>
@@ -48,7 +45,7 @@ const Contact = forwardRef((props, ref) => {
             </label>
             <textarea
               rows={4}
-              className="bg-cod-gray-900 hover:bg-cod-gray-800 focus:bg-cod-gray-800 mb-1 mt-1 w-full rounded-md p-3 transition duration-300 ease-in-out focus:outline-none"
+              className="bg-cod-gray-900 hover:bg-cod-gray-800 focus:bg-cod-gray-800 mb-1 mt-1 w-full rounded-md p-3 text-sm transition duration-300 ease-in-out focus:outline-none"
             ></textarea>
             <button
               type="submit"
