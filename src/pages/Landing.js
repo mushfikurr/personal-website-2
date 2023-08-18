@@ -19,28 +19,63 @@ const Landing = forwardRef((props, ref) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
-  useEffect(() => {
-    if (isInView) {
-      for (let i = 0; i < getRandomInt(50, 70); i++) {
-        const randomX = getRandomInt(0, ref.current.offsetWidth - 150);
-        const randomY = getRandomInt(0, ref.current.offsetHeight - 200);
-        const randomSize = getRandomInt(0, 2);
+  function getRandomFloat(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const fillStarsEvenly = () => {
+    const numRows = 7; // Number of rows in the grid
+    const numCols = 7; // Number of columns in the grid
+
+    const stepX = ref.current.offsetWidth / numCols;
+    const stepY = ref.current.offsetHeight / numRows;
+
+    /**
+     * Utilises a grid system which allows a more evenly spaced random generate of stars
+     */
+    for (let row = 0; row < numRows; row++) {
+      for (let col = 0; col < numCols; col++) {
+        const randomX = col * stepX + getRandomFloat(-stepX / 2, stepX / 2);
+        const randomY = row * stepY + getRandomFloat(-stepY / 2, stepY / 2);
+        const randomSize = getRandomInt(1, 6);
         const randomDuration = getRandomInt(0, 30);
         setStars((prevStars) => [
           ...prevStars,
           {
-            x: randomX,
-            y: randomY,
+            x: Math.max(0, Math.min(ref.current.offsetWidth - 150, randomX)),
+            y: Math.max(0, Math.min(ref.current.offsetHeight - 100, randomY)),
             size: randomSize,
             duration: randomDuration,
           },
         ]);
       }
+    }
+  };
+
+  /**
+   * Generate stars while landing page is in view
+   */
+  useEffect(() => {
+    if (isInView) {
+      fillStarsEvenly();
     } else {
       setStars([]);
       console.log("cleared");
     }
   }, [isInView]);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setStars([]);
+      fillStarsEvenly();
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
 
   // useEffect(() => {
   //   console.log(stars);
@@ -59,18 +94,24 @@ const Landing = forwardRef((props, ref) => {
             <AnimatePresence>
               {stars.map((star, idx) => (
                 <motion.div
-                  initial={{ scale: 0 }}
+                  initial={{ opacity: 0 }}
                   animate={{
                     opacity: 1,
-                    scale: 1.3,
                     transition: {
-                      duration: star.duration / 10,
+                      duration: (star.duration * 2) / 10,
                       ease: "easeInOut",
                     },
                   }}
-                  exit={{ opacity: 0, scale: 0 }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0,
+                    transition: {
+                      duration: (star.duration * 2) / 30,
+                      ease: "easeInOut",
+                    },
+                  }}
                   key={idx}
-                  className="glow bg-cod-gray-500 absolute rounded-full object-cover"
+                  className=" bg-cod-gray-400 drop-shadow-glow absolute object-cover"
                   style={{
                     right: star.x,
                     top: star.y,
@@ -86,7 +127,7 @@ const Landing = forwardRef((props, ref) => {
             <div className="flex max-w-prose flex-col gap-4">
               <h1 className="text-cod-gray-50 text-4xl font-bold md:text-6xl">
                 I'm{" "}
-                <span className="text-deepblue-500 drop-shadow-glow">
+                <span className="text-deepblue-500 border-deepblue-500">
                   Mushfikur
                 </span>
                 .
@@ -100,7 +141,7 @@ const Landing = forwardRef((props, ref) => {
                     skills.
                   </p>
                   <p className="bg-cod-gray-50 text-cod-gray-800 h-fit p-2 text-sm">
-                    Currently looking for a full-time position. Interested?{" "}
+                    📌 I'm currently looking for full-time work. Interested?{" "}
                     <span className="text-deepblue-500">
                       Let's get in touch.
                     </span>
@@ -131,7 +172,7 @@ const Landing = forwardRef((props, ref) => {
               }}
             >
               <p className="group-hover:text-deepblue-300 text-cod-gray-200 mr-2 hidden text-center text-sm transition duration-300 ease-in-out group-hover:translate-y-1 lg:block">
-                Discover my story!
+                View my projects
               </p>
               <div className="bg-cod-gray-900 group-hover:bg-deepblue-500 text-cod-gray-200 rounded-full p-3 transition duration-300 ease-in-out group-hover:translate-y-1">
                 <svg
