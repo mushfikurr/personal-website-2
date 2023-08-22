@@ -31,7 +31,7 @@ const Landing = forwardRef((props, ref) => {
     const stepY = ref.current.offsetHeight / numRows;
 
     /**
-     * Utilises a grid system which allows a more evenly spaced random generate of stars
+     * Grid system which allows a more evenly spaced random generation of stars
      */
     for (let row = 0; row < numRows; row++) {
       for (let col = 0; col < numCols; col++) {
@@ -123,24 +123,24 @@ const Landing = forwardRef((props, ref) => {
             </AnimatePresence>
           </div>
 
-          <div className="z-50 flex flex-grow flex-col sm:mt-28">
+          <div className="z-10 flex flex-grow flex-col sm:mt-28">
             <div className="flex max-w-prose flex-col gap-4">
               <h1 className="text-cod-gray-50 text-4xl font-bold md:text-6xl">
                 I'm{" "}
                 <span className="text-deepblue-500 border-deepblue-500">
-                  Mushfikur
+                  Dynamic Test Test
                 </span>
                 .
               </h1>
               <div className="flex flex-col-reverse justify-center gap-4 sm:flex-row">
                 <div className="max-w-prose">
-                  <p className=" bg-cod-gray-50 text-cod-gray-800 text-md h-fit p-2">
+                  <p className=" bg-cod-gray-200 text-cod-gray-800 text-md h-fit p-2">
                     A full-stack London-based developer passionate about
                     crafting refined software. Throughout my journey, I enjoy
                     sharing my insights on web development and software-related
                     skills.
                   </p>
-                  <p className="bg-cod-gray-50 text-cod-gray-800 h-fit p-2 text-sm">
+                  <p className="bg-cod-gray-200 text-cod-gray-800 h-fit p-2 text-sm">
                     📌 I'm currently looking for full-time work. Interested?{" "}
                     <span className="text-deepblue-500">
                       Let's get in touch.
@@ -148,11 +148,14 @@ const Landing = forwardRef((props, ref) => {
                   </p>
                 </div>
 
-                <div className="border-cod-gray-100 flex w-1/3 flex-none flex-col items-center gap-2 border-2">
+                <div className="border-cod-gray-200 relative flex w-1/3 flex-none flex-col gap-2 border-2">
                   <img
                     src="https://i.imgur.com/1huqS2C.jpg"
-                    className="object-cover shadow-inner"
+                    className="flex-grow object-cover shadow-inner"
                   ></img>
+                  <div className="absolute bg-gray-200 px-1 text-xs">
+                    🌍 Türkiye, Antalya
+                  </div>
                 </div>
               </div>
             </div>

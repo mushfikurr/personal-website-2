@@ -12,7 +12,7 @@ const Contact = forwardRef((props, ref) => {
       setActivePage={props.setActivePage}
     >
       <div className={`mt-8 flex flex-grow flex-col items-center md:mt-20`}>
-        <div className="flex max-w-prose flex-grow flex-col md:mt-28">
+        <div className="flex max-w-prose flex-grow flex-col md:mt-20">
           <div className="max-w-fit">
             <p className="text-deepblue-500 mb-1 text-3xl font-bold lg:text-3xl">
               Contact.

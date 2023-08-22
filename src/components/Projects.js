@@ -163,20 +163,20 @@ export default function Projects() {
 
   return (
     <div className="sm:block md:px-32 lg:px-64">
-      <motion.div
+      <div
         variants={allProjectsAnimProps}
         initial="hidden"
         animate="show"
         className="h-full select-none space-y-4 lg:grid lg:h-auto lg:grid-cols-3 lg:justify-center lg:gap-x-8 lg:gap-y-4 lg:space-y-0"
       >
         {allProjects.map((project, i) => (
-          <MotionProjectCollapsable
+          <ProjectCollapsable
             variants={projectAnimProps}
             key={project.title}
             {...project}
           />
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

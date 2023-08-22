@@ -53,6 +53,7 @@ export default function NowListening() {
   let timer = null;
   const [currentSong, setCurrentSong] = useState({});
   const [hasLoadedSong, setHasLoadedSong] = useState(false);
+  let pollingRate = 60000;
 
   const getCurrentSong = async () => {
     timer = null;
@@ -83,11 +84,17 @@ export default function NowListening() {
       isOpen ? "p-4" : "pl-0 pr-4 py-4"
     }`;
 
+    const imageUrl = `${
+      currentSong?.image?.[2]?.["#text"]
+        ? `${currentSong?.image[2]["#text"]}`
+        : `assets/LastFMIcon.png`
+    }`;
+
     if (hasLoadedSong) {
       return (
         <div className="flex items-center">
           <MotionCoverImage
-            imageUrl={currentSong?.image[2]["#text"]}
+            imageUrl={imageUrl}
             active={currentSong["@attr"]?.nowplaying}
             loaded={hasLoadedSong}
             reload={getCurrentSong}

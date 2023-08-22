@@ -35,7 +35,7 @@ export default function Socials() {
       animate="show"
       ref={divRef}
       layout
-      className="bg-cod-gray-900 invisible fixed z-50 flex w-16 max-w-md justify-center overflow-hidden rounded-full bg-opacity-90 text-white backdrop-blur-lg sm:mx-24 sm:my-36 lg:visible"
+      className="bg-cod-gray-900 z-1 invisible fixed flex w-16 max-w-md justify-center overflow-hidden rounded-full bg-opacity-90 text-white backdrop-blur-lg sm:mx-24 sm:my-36 lg:visible"
     >
       <ul className="flex h-full w-10 flex-col items-center space-y-4 py-6">
         {socialsToRender.map((social) => {

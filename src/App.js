@@ -15,7 +15,7 @@ function App() {
   ];
 
   return (
-    <div className="bg-cod-gray-950">
+    <div className="bg-cod-gray-950 -z-10">
       <Navbar
         pages={pages}
         activePage={activePage}
