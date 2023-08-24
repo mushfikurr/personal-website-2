@@ -37,6 +37,9 @@ export const brandColours = {
   nodejs: "#339933",
   socketio: "#010101",
   material: "#007FFF",
+  javascript: "#F7DF1E",
+  html: "#E34F26",
+  css: "#1572B6",
 };
 
 const PopoverContent = (props) => {

@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import Projects from "../components/Projects";
+import Projects from "../components/ProjectsGrid";
 import { useRef, useState, useEffect, forwardRef } from "react";
 import { useInView } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
@@ -29,6 +29,7 @@ const Landing = forwardRef((props, ref) => {
 
     const stepX = ref.current.offsetWidth / numCols;
     const stepY = ref.current.offsetHeight / numRows;
+    console.log(ref.current.offsetWidth);
 
     /**
      * Grid system which allows a more evenly spaced random generation of stars
@@ -42,8 +43,8 @@ const Landing = forwardRef((props, ref) => {
         setStars((prevStars) => [
           ...prevStars,
           {
-            x: Math.max(0, Math.min(ref.current.offsetWidth - 150, randomX)),
-            y: Math.max(0, Math.min(ref.current.offsetHeight - 100, randomY)),
+            x: Math.max(0, Math.min(ref.current.offsetWidth - 50, randomX)),
+            y: Math.max(0, Math.min(ref.current.offsetHeight - 50, randomY)),
             size: randomSize,
             duration: randomDuration,
           },
@@ -64,6 +65,9 @@ const Landing = forwardRef((props, ref) => {
     }
   }, [isInView]);
 
+  /**
+   * When the page is resized the stars need to be regenerated to fit the boundaries of the new window size.
+   */
   useEffect(() => {
     const handleWindowResize = () => {
       setStars([]);
@@ -88,8 +92,8 @@ const Landing = forwardRef((props, ref) => {
       ref={ref}
       title="Home"
     >
-      <div className="mt-8 flex flex-grow flex-col sm:mt-20">
-        <div className="relative flex flex-grow flex-col items-center justify-center">
+      <div className="mt-8 flex flex-grow flex-col items-center justify-center sm:mt-20">
+        <div className="relative flex w-full flex-grow flex-col">
           <div id="stars" className="z-0">
             <AnimatePresence>
               {stars.map((star, idx) => (
@@ -123,12 +127,12 @@ const Landing = forwardRef((props, ref) => {
             </AnimatePresence>
           </div>
 
-          <div className="z-10 flex flex-grow flex-col sm:mt-28">
+          <div className="z-10 flex flex-grow flex-col items-center sm:mt-28">
             <div className="flex max-w-prose flex-col gap-4">
               <h1 className="text-cod-gray-50 text-4xl font-bold md:text-6xl">
                 I'm{" "}
                 <span className="text-deepblue-500 border-deepblue-500">
-                  Dynamic Test Test
+                  a Long Sentence
                 </span>
                 .
               </h1>
@@ -153,7 +157,7 @@ const Landing = forwardRef((props, ref) => {
                     src="https://i.imgur.com/1huqS2C.jpg"
                     className="flex-grow object-cover shadow-inner"
                   ></img>
-                  <div className="absolute bg-gray-200 px-1 text-xs">
+                  <div className="absolute bg-gray-200 px-1 text-xs max-sm:hidden">
                     🌍 Türkiye, Antalya
                   </div>
                 </div>

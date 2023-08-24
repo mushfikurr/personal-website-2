@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Navbar from "./components/Navbar";
 import Socials from "./components/Socials";
 import Landing from "./pages/Landing";
-import About from "./pages/About";
+import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
   const pages = [
     { title: "Home", ref: useRef() },
-    { title: "About", ref: useRef() },
+    { title: "Projects", ref: useRef() },
     { title: "Contact", ref: useRef() },
   ];
 
@@ -29,7 +29,7 @@ function App() {
         setActivePage={setActivePage}
         aboutRef={pages[1].ref}
       />
-      <About ref={pages[1].ref} setActivePage={setActivePage} />
+      <Projects ref={pages[1].ref} setActivePage={setActivePage} />
       <Contact ref={pages[2].ref} setActivePage={setActivePage} />
     </div>
   );
