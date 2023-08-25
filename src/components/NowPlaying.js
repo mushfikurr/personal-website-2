@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
  * - Fix collapse/expand animation (?) []
  */
 
-const ENDPOINT = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=mvshy&api_key=${process.env.REACT_APP_LASTFM_KEY}&format=json`;
+const ENDPOINT = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=mvshy&api_key=${process.env.REACT_APP_LASTFM_KEY}&format=json`;
 
 const ClickRefreshWrapper = (props) => {
   return (
