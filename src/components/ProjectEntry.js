@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { SocialIcon, brandColours } from "./Icons";
+import { brandColours } from "./Icons";
 import { forwardRef, useState } from "react";
 
 const TechStack = (props) => {
@@ -55,28 +55,6 @@ export const ProjectEntry = forwardRef((props, ref) => {
       type: "spring",
       stiffness: 40,
       ease: "easeInOut",
-    },
-  };
-
-  const allSocialsAnimProps = {
-    hidden: { height: 0, opacity: 0 },
-    show: {
-      height: "auto",
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.1,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const socialAnimProps = {
-    hidden: { opacity: 0, y: 15 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeInOut" },
     },
   };
 

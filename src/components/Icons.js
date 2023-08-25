@@ -77,13 +77,13 @@ export const XMark = (props) => {
     <svg
       fill="none"
       viewBox="0 0 24 24"
-      stroke-width="2.5"
+      strokeWidth="2.5"
       stroke="currentColor"
       className={classNames}
     >
       <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         d="M6 18L18 6M6 6l12 12"
       />
     </svg>

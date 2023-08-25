@@ -1,6 +1,6 @@
 import { PopoverIcon, ChevronDown, ChevronUp } from "./Icons";
 import { useState, useRef, forwardRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const allProjects = [
   {
@@ -100,8 +100,7 @@ const ProjectCollapsable = forwardRef((props, ref) => {
           <div className="text-cod-gray-200 pt-4 text-xs">
             <p>
               {props.description ||
-                "Lorem ipsum sit dolor amet Lorem ipsum sit dolor amet Lorem ipsum \
-            sit dolor amet."}
+                "Lorem ipsum sit dolor amet Lorem ipsum sit dolor amet Lorem ipsum sit dolor amet."}
             </p>
           </div>
           {/* Project languages/tech used. */}
@@ -158,8 +157,6 @@ export default function Projects() {
       transition: { duration: 0.5, ease: "easeInOut" },
     },
   };
-
-  const MotionProjectCollapsable = motion(ProjectCollapsable);
 
   return (
     <div className="sm:block md:px-32 lg:px-64">

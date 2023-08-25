@@ -1,8 +1,5 @@
-import Header from "../components/Header";
-import Projects from "../components/ProjectsGrid";
-import { useRef, useState, useEffect, forwardRef } from "react";
-import { useInView } from "framer-motion";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, forwardRef } from "react";
+import { useInView, motion, AnimatePresence } from "framer-motion";
 import Page from "./PageLayout";
 
 const Landing = forwardRef((props, ref) => {

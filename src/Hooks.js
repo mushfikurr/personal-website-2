@@ -2,7 +2,7 @@
  * Hook from GavKilbride on StackOverflow
  * https://stackoverflow.com/questions/46140764/polling-api-every-x-seconds-with-react
  */
-import React, { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export const useInterval = (callback, delay) => {
   const savedCallback = useRef();

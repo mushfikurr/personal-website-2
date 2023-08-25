@@ -1,4 +1,4 @@
-import { createRef, forwardRef, useEffect, useRef, useState } from "react";
+import { createRef, forwardRef, useEffect, useState } from "react";
 import { useInterval } from "../Hooks";
 import { ChevronRight, XMark } from "./Icons";
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,7 +35,13 @@ const CoverImage = forwardRef((props, ref) => {
     return (
       <ClickRefreshWrapper action={props.reload}>
         <div className="inline flex-shrink-0 filter transition-all duration-300 hover:shadow-inner hover:brightness-125">
-          <img className={style} width="16" height="16" src={props.imageUrl} />
+          <img
+            className={style}
+            width="16"
+            height="16"
+            src={props.imageUrl}
+            alt="The cover art of the currently played song."
+          />
         </div>
       </ClickRefreshWrapper>
     );
@@ -53,7 +59,6 @@ export default function NowListening() {
   let timer = null;
   const [currentSong, setCurrentSong] = useState({});
   const [hasLoadedSong, setHasLoadedSong] = useState(false);
-  let pollingRate = 60000;
 
   const getCurrentSong = async () => {
     timer = null;
@@ -101,9 +106,7 @@ export default function NowListening() {
           />
           <div className="flex flex-grow flex-col overflow-hidden ">
             {/* This div is to calculate the width of the track descriptions for collapse animation */}
-            <AnimatePresence>
-              
-            </AnimatePresence>
+            <AnimatePresence></AnimatePresence>
             <div
               ref={trackDescRef}
               className="transition-all duration-500 ease-in-out"

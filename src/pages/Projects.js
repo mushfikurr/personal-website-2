@@ -1,8 +1,6 @@
-import { forwardRef } from "react";
+import { forwardRef, useState, useRef } from "react";
 import Page from "./PageLayout";
-import { Book, ChevronLeft, ChevronRight } from "../components/Icons";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef } from "react";
 import { ProjectEntry } from "../components/ProjectEntry";
 
 const Projects = forwardRef((props, ref) => {
