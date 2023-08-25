@@ -8,11 +8,12 @@ import { ProjectEntry } from "../components/ProjectEntry";
 const Projects = forwardRef((props, ref) => {
   const allProjects = [
     {
-      title: "joiner",
+      title: "videocollab",
       description:
         "A video collaboration desktop application allowing users to join together to cut, merge, and compile video together in real time.",
       languages: ["javascript", "html", "css"],
       techstack: ["react", "electron", "tailwind", "nodejs", "socketio"],
+      link: "https://github.com/mushfikurr/videocollab",
     },
     {
       title: "govee-controller",
@@ -20,6 +21,7 @@ const Projects = forwardRef((props, ref) => {
         "A web app that allows the controlling of Govee smart devices! Featuring a sleek and intuitive interface to control aspects such as light and custom features such as music syncing.",
       languages: ["javascript", "html", "css"],
       techstack: ["react", "material"],
+      link: "https://github.com/mushfikurr/govee-controller",
     },
     {
       title: "personal-website",
@@ -27,13 +29,15 @@ const Projects = forwardRef((props, ref) => {
         "My single-page personal portfolio website built with React and Tailwind. ",
       languages: ["javascript", "html", "css"],
       techstack: ["react", "tailwind"],
+      link: "https://github.com/mushfikurr/personal-website-2",
     },
     {
-      title: "expand-test",
+      title: "edu-social-media",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id convallis enim. Ut euismod tincidunt elit vitae iaculis. Nam sed justo lacinia, porttitor massa ut, convallis libero. Ut aliquam, diam placerat dapibus viverra, mauris ante commodo ex, id fermentum quam mauris vitae purus. Curabitur commodo eleifend elementum.",
-      languages: ["javascript", "html", "css"],
-      techstack: ["react", "tailwind"],
+        "A fully implemented proof of concept education-oriented social media. Built in Python using mainly Flask, this was my first foray into creating a complex web application and putting my knowledge into practice.",
+      languages: ["python", "html", "css", "javascript", "sql"],
+      techstack: ["flask", "mysql", "jquery", "sqlalchemy"],
+      link: "https://github.com/mushfikurr/edu-social-media",
     },
   ];
 
@@ -63,6 +67,7 @@ const Projects = forwardRef((props, ref) => {
                   description={project.description}
                   techstack={project.techstack}
                   languages={project.languages}
+                  link={project.link}
                 />
               ))}
             </div>
@@ -136,7 +141,7 @@ const Projects = forwardRef((props, ref) => {
                 elemToScrollTo.current?.scrollIntoView();
                 console.log(elemToScrollTo.current);
               }}
-              className="bg-deepblue-500 hover:bg-deepblue-600 text-cod-gray-100 mb-2 mt-2 rounded-sm px-3 py-3 text-sm transition duration-500 ease-in-out"
+              className="bg-deepblue-500 hover:bg-deepblue-600 text-cod-gray-100 mb-2 mt-2 rounded-sm px-4 py-3 text-sm transition duration-500 ease-in-out"
             >
               {expanded ? "Show less" : "Show more"}
             </button>

@@ -90,36 +90,42 @@ export const ProjectEntry = forwardRef((props, ref) => {
             whileInView={animBackground}
             className="bg-deepblue-200 group-hover:bg-deepblue-400 absolute -z-10 h-full w-full drop-shadow-md transition-colors duration-300 ease-in-out"
           ></motion.div>
-          <div className="bg-cod-gray-200 min-w-1/3 flex flex-col items-center justify-center gap-2 p-4 max-sm:hidden">
-            <div className="h-auto max-w-full overflow-hidden rounded-sm">
-              <img
-                className="h-auto max-w-md shadow-inner"
-                src="https://picsum.photos/50"
-              />
+          <div className="flex flex-col px-6 py-6">
+            <div className="mb-4">
+              <p className="text-cod-gray-800 w-full font-bold">
+                {props.title || "project-title"}
+              </p>
+              <p className="text-xs">
+                {props.description || "project-description"}
+              </p>
             </div>
-            <button className="bg-deepblue-500 hover:bg-deepblue-600 text-cod-gray-100 w-full rounded-sm px-3 py-2 text-xs transition duration-500 ease-in-out">
-              View
-            </button>
-          </div>
-          <div className="flex flex-col px-4 py-6">
-            <p className="text-cod-gray-800 font-bold">
-              {props.title || "project-title"}
-            </p>
-            <p className="text-xs">
-              {props.description || "project-description"}
-            </p>
 
-            <div className="mt-4 flex gap-2 text-xs">
-              <p className="text-xs">🔨</p>
-              {props.techstack.map((techStack) => (
-                <TechStack key={techStack} techStack={techStack} />
-              ))}
-            </div>
-            <div className="flex gap-2 text-xs">
-              <p className="text-xs">📕</p>
-              {props.languages.map((language) => (
-                <Language key={language} language={language} />
-              ))}
+            <div className="flex h-full max-w-lg items-center gap-2">
+              <div className="flex flex-grow flex-col">
+                <div className="flex gap-2 text-xs">
+                  <p className="text-xs">🔨</p>
+                  {props.techstack.map((techStack) => (
+                    <TechStack key={techStack} techStack={techStack} />
+                  ))}
+                </div>
+                <div className="flex gap-2 text-xs">
+                  <p className="text-xs">📕</p>
+                  {props.languages.map((language) => (
+                    <Language key={language} language={language} />
+                  ))}
+                </div>
+              </div>
+              <div className="flex h-full items-center">
+                <button
+                  onClick={() => {
+                    if (typeof window !== "undefined")
+                      window.location.href = props.link;
+                  }}
+                  className="bg-deepblue-500 hover:bg-deepblue-600 text-cod-gray-100 rounded-sm px-4 py-2 text-xs transition duration-500 ease-in-out"
+                >
+                  View
+                </button>
+              </div>
             </div>
           </div>
         </AnimatePresence>

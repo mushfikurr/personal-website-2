@@ -132,7 +132,7 @@ const Landing = forwardRef((props, ref) => {
               <h1 className="text-cod-gray-50 text-4xl font-bold md:text-6xl">
                 I'm{" "}
                 <span className="text-deepblue-500 border-deepblue-500">
-                  a Long Sentence
+                  Mushfikur Rahman
                 </span>
                 .
               </h1>

@@ -42,7 +42,7 @@ const Contact = forwardRef((props, ref) => {
             <p className="text-deepblue-500 mb-4 ml-[4px] text-4xl font-bold">
               Contact.
             </p>
-            <span className="flex gap-2 text-gray-200 md:hidden">
+            <span className="ml-[8px] flex gap-2 text-gray-200 md:hidden">
               {socialsToRender.map((socialName) => (
                 <SocialIcon
                   classNames={"h-5 w-5"}
@@ -68,6 +68,7 @@ const Contact = forwardRef((props, ref) => {
               <motion.input
                 variants={contactFieldAnim}
                 name="name"
+                required
                 className="bg-cod-gray-300 hover:bg-cod-gray-400 focus:bg-deepblue-300 md:text-md  mb-2 mt-1 w-full origin-left rounded-sm p-3 text-sm transition duration-300 ease-in-out focus:outline-none"
               ></motion.input>
             </div>
@@ -79,6 +80,7 @@ const Contact = forwardRef((props, ref) => {
               <motion.input
                 type="email"
                 name="email"
+                required
                 variants={contactFieldAnim}
                 className="bg-cod-gray-300 hover:bg-cod-gray-400 focus:bg-deepblue-300 md:text-md mb-2 mt-1 w-full origin-left rounded-sm p-3 text-sm transition duration-300 ease-in-out focus:outline-none"
               ></motion.input>
@@ -90,6 +92,7 @@ const Contact = forwardRef((props, ref) => {
             <div className="w-full">
               <motion.textarea
                 rows={4}
+                required
                 name="message"
                 variants={contactFieldAnim}
                 className="bg-cod-gray-300 hover:bg-cod-gray-400 focus:bg-deepblue-300 md:text-md  mb-1 mt-1 w-full origin-left rounded-sm p-3 text-sm transition duration-300 ease-in-out focus:outline-none"
@@ -98,7 +101,7 @@ const Contact = forwardRef((props, ref) => {
 
             <button
               type="submit"
-              className="bg-deepblue-500 hover:bg-deepblue-600 text-cod-gray-100 mb-2 mt-2 rounded-sm px-3 py-3 text-sm transition duration-500 ease-in-out"
+              className="bg-deepblue-500 hover:bg-deepblue-600 text-cod-gray-100 mb-2 mt-2 rounded-sm px-4 py-3 text-sm transition duration-500 ease-in-out"
             >
               Submit
             </button>

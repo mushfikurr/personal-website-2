@@ -1,7 +1,7 @@
 import { createRef, forwardRef, useEffect, useRef, useState } from "react";
 import { useInterval } from "../Hooks";
 import { ChevronRight, XMark } from "./Icons";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 /**
  * TODO:
@@ -101,6 +101,9 @@ export default function NowListening() {
           />
           <div className="flex flex-grow flex-col overflow-hidden ">
             {/* This div is to calculate the width of the track descriptions for collapse animation */}
+            <AnimatePresence>
+              
+            </AnimatePresence>
             <div
               ref={trackDescRef}
               className="transition-all duration-500 ease-in-out"
