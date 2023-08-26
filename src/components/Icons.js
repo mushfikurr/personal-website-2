@@ -194,6 +194,9 @@ export function SocialIcon(props) {
       fill="currentColor"
       viewBox="0 0 24 24"
       role="img"
+      onClick={() => {
+        if (typeof window !== "undefined") window.location.href = props.link;
+      }}
     >
       <path d={path[props.socialName]} />
     </svg>

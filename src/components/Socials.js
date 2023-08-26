@@ -2,7 +2,18 @@ import { SocialIcon } from "./Icons";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
-export const socialsToRender = ["github", "twitter", "linkedin", "discord"];
+export const socialsToRender = [
+  { name: "github", link: "https://github.com/mushfikurr" },
+  { name: "twitter" },
+  {
+    name: "linkedin",
+    link: "https://www.linkedin.com/in/mushfikur-rahman-832855201/",
+  },
+  {
+    name: "discord",
+    link: "https://discord.gg/sRRs9wfB",
+  },
+];
 
 export default function Socials() {
   const divRef = useRef();
@@ -41,11 +52,11 @@ export default function Socials() {
         {socialsToRender.map((social) => {
           return (
             <motion.li
-              key={social}
+              key={social.name}
               variants={socialAnimProps}
               className="hover:text-deepblue-500 transition-colors duration-300 hover:cursor-pointer"
             >
-              <SocialIcon socialName={social} />
+              <SocialIcon socialName={social.name} link={social.link} />
             </motion.li>
           );
         })}
