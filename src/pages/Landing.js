@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, forwardRef } from "react";
+import { useState, useCallback, useEffect, forwardRef } from "react";
 import { useInView, motion, AnimatePresence } from "framer-motion";
 import Page from "./PageLayout";
 
@@ -30,10 +30,9 @@ const Landing = forwardRef((props, ref) => {
     };
   };
 
-  const fillStarsEvenly = useMemo(() => {
+  const fillStarsEvenly = useCallback(() => {
     const numRows = 7; // Number of rows in the grid
     const numCols = 7; // Number of columns in the grid
-
     const stepX = window.innerWidth / numCols;
     const stepY = window.innerHeight / numRows;
 
@@ -58,7 +57,7 @@ const Landing = forwardRef((props, ref) => {
     }
 
     return stars;
-  }, [ref]);
+  }, []);
 
   /**
    * Generate stars while landing page is in view
@@ -77,7 +76,7 @@ const Landing = forwardRef((props, ref) => {
   useEffect(() => {
     const handleWindowResize = debounce(() => {
       setStars([]);
-      setStars(fillStarsEvenly);
+      setStars(fillStarsEvenly());
     }, 300);
 
     window.addEventListener("resize", handleWindowResize);

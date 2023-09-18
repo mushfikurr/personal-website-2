@@ -60,7 +60,7 @@ export const ProjectEntry = forwardRef((props, ref) => {
 
   return (
     <>
-      <div className="bg-cod-gray-300 group relative flex" ref={ref}>
+      <div className="bg-cod-gray-300 group relative flex min-w-full" ref={ref}>
         <AnimatePresence>
           <motion.div
             initial={initialAnimBackground}
