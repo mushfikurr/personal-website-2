@@ -76,7 +76,6 @@ const Landing = forwardRef((props, ref) => {
    */
   useEffect(() => {
     const handleWindowResize = debounce(() => {
-      console.log("Window resize!");
       setStars([]);
       setStars(fillStarsEvenly);
     }, 300);
@@ -86,7 +85,7 @@ const Landing = forwardRef((props, ref) => {
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  }, []);
+  }, [fillStarsEvenly]);
 
   return (
     <Page
