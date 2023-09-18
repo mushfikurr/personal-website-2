@@ -28,6 +28,7 @@ function App() {
         ref={pages[0].ref}
         setActivePage={setActivePage}
         aboutRef={pages[1].ref}
+        contactRef={pages[2].ref}
       />
       <Projects ref={pages[1].ref} setActivePage={setActivePage} />
       <Contact ref={pages[2].ref} setActivePage={setActivePage} />

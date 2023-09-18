@@ -8,6 +8,10 @@ const Landing = forwardRef((props, ref) => {
     props.aboutRef.current.scrollIntoView();
   };
 
+  const scrollIntoContactsIntoView = () => {
+    props.contactRef.current.scrollIntoView();
+  };
+
   const isInView = useInView(ref, { amount: 0.6 });
   const [stars, setStars] = useState([]);
 
@@ -154,7 +158,12 @@ const Landing = forwardRef((props, ref) => {
                   </p>
                   <p className="bg-cod-gray-200 text-cod-gray-800 h-fit p-2 text-sm">
                     📌 I'm currently looking for full-time work. Interested?{" "}
-                    <span className="text-deepblue-500">
+                    <span
+                      className="text-deepblue-600 hover:text-deepblue-700 cursor-pointer transition-colors duration-300 ease-in-out"
+                      onClick={() => {
+                        scrollIntoContactsIntoView();
+                      }}
+                    >
                       Let's get in touch.
                     </span>
                   </p>

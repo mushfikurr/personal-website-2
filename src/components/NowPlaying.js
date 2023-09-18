@@ -1,5 +1,5 @@
 import { createRef, forwardRef, useEffect, useState } from "react";
-import { useInterval } from "../Hooks";
+import useDeviceDetection, { useInterval } from "../Hooks";
 import { ChevronRight, XMark } from "./Icons";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -59,8 +59,10 @@ export default function NowListening() {
   let timer = null;
   const [currentSong, setCurrentSong] = useState({});
   const [hasLoadedSong, setHasLoadedSong] = useState(false);
+  const device = useDeviceDetection();
 
   const getCurrentSong = async () => {
+    if (device === "Mobile") return;
     timer = null;
     setHasLoadedSong(false);
     fetch(ENDPOINT)
