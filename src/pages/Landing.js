@@ -1,4 +1,4 @@
-import { useState, useEffect, forwardRef } from "react";
+import { useState, useMemo, useEffect, forwardRef } from "react";
 import { useInView, motion, AnimatePresence } from "framer-motion";
 import Page from "./PageLayout";
 
@@ -16,71 +16,77 @@ const Landing = forwardRef((props, ref) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
-  function getRandomFloat(min, max) {
+  const getRandomFloat = (min, max) => {
     return Math.random() * (max - min) + min;
-  }
+  };
 
-  const fillStarsEvenly = () => {
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const fillStarsEvenly = useMemo(() => {
     const numRows = 7; // Number of rows in the grid
     const numCols = 7; // Number of columns in the grid
 
-    const stepX = ref.current.offsetWidth / numCols;
-    const stepY = ref.current.offsetHeight / numRows;
-    console.log(ref.current.offsetWidth);
+    const stepX = window.innerWidth / numCols;
+    const stepY = window.innerHeight / numRows;
 
     /**
      * Grid system which allows a more evenly spaced random generation of stars
      */
+    const stars = [];
+
     for (let row = 0; row < numRows; row++) {
       for (let col = 0; col < numCols; col++) {
         const randomX = col * stepX + getRandomFloat(-stepX / 2, stepX / 2);
         const randomY = row * stepY + getRandomFloat(-stepY / 2, stepY / 2);
         const randomSize = getRandomInt(1, 6);
         const randomDuration = getRandomInt(0, 30);
-        setStars((prevStars) => [
-          ...prevStars,
-          {
-            x: Math.max(0, Math.min(ref.current.offsetWidth - 50, randomX)),
-            y: Math.max(0, Math.min(ref.current.offsetHeight - 50, randomY)),
-            size: randomSize,
-            duration: randomDuration,
-          },
-        ]);
+        stars.push({
+          x: Math.max(0, Math.min(window.innerWidth - 50, randomX)),
+          y: Math.max(0, Math.min(window.innerHeight - 50, randomY)),
+          size: randomSize,
+          duration: randomDuration,
+        });
       }
     }
-  };
+
+    return stars;
+  }, [ref]);
 
   /**
    * Generate stars while landing page is in view
    */
   useEffect(() => {
     if (isInView) {
-      fillStarsEvenly();
+      setStars(fillStarsEvenly);
     } else {
       setStars([]);
-      console.log("cleared");
     }
-  }, [isInView]);
+  }, [isInView, fillStarsEvenly]);
 
   /**
    * When the page is resized the stars need to be regenerated to fit the boundaries of the new window size.
    */
   useEffect(() => {
-    const handleWindowResize = () => {
+    const handleWindowResize = debounce(() => {
+      console.log("Window resize!");
       setStars([]);
-      fillStarsEvenly();
-    };
+      setStars(fillStarsEvenly);
+    }, 300);
 
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  });
-
-  // useEffect(() => {
-  //   console.log(stars);
-  // }, [stars]);
+  }, []);
 
   return (
     <Page
