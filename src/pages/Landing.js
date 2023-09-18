@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, forwardRef } from "react";
 import { useInView, motion, AnimatePresence } from "framer-motion";
 import Page from "./PageLayout";
+import { useDeviceDetection } from "../Hooks";
 
 const Landing = forwardRef((props, ref) => {
   const scrollProjectsIntoView = () => {
@@ -30,7 +31,10 @@ const Landing = forwardRef((props, ref) => {
     };
   };
 
+  const device = useDeviceDetection();
+
   const fillStarsEvenly = useCallback(() => {
+    if (device === "Mobile") return [];
     const numRows = 7; // Number of rows in the grid
     const numCols = 7; // Number of columns in the grid
     const stepX = window.innerWidth / numCols;
@@ -63,6 +67,7 @@ const Landing = forwardRef((props, ref) => {
    * Generate stars while landing page is in view
    */
   useEffect(() => {
+    if (device === "Mobile") return;
     if (isInView) {
       setStars(fillStarsEvenly);
     } else {
@@ -96,36 +101,38 @@ const Landing = forwardRef((props, ref) => {
       <div className="mt-8 flex flex-grow flex-col items-center justify-center sm:mt-20">
         <div className="relative flex w-full flex-grow flex-col">
           <div id="stars" className="z-0">
-            <AnimatePresence>
-              {stars.map((star, idx) => (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: 1,
-                    transition: {
-                      duration: (star.duration * 2) / 10,
-                      ease: "easeInOut",
-                    },
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0,
-                    transition: {
-                      duration: (star.duration * 2) / 30,
-                      ease: "easeInOut",
-                    },
-                  }}
-                  key={idx}
-                  className=" bg-cod-gray-400 drop-shadow-glow absolute object-cover"
-                  style={{
-                    right: star.x,
-                    top: star.y,
-                    height: star.size,
-                    width: star.size,
-                  }}
-                />
-              ))}
-            </AnimatePresence>
+            {device !== "Mobile" && (
+              <AnimatePresence>
+                {stars.map((star, idx) => (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: 1,
+                      transition: {
+                        duration: (star.duration * 2) / 10,
+                        ease: "easeInOut",
+                      },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0,
+                      transition: {
+                        duration: (star.duration * 2) / 30,
+                        ease: "easeInOut",
+                      },
+                    }}
+                    key={idx}
+                    className=" bg-cod-gray-400 drop-shadow-glow absolute object-cover"
+                    style={{
+                      right: star.x,
+                      top: star.y,
+                      height: star.size,
+                      width: star.size,
+                    }}
+                  />
+                ))}
+              </AnimatePresence>
+            )}
           </div>
 
           <div className="z-10 flex flex-grow flex-col items-center sm:mt-28">
