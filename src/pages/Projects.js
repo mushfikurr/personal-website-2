@@ -47,13 +47,13 @@ const Projects = forwardRef((props, ref) => {
       ref={ref}
       title="Projects"
       classNames={
-        "min-w-screen font-iAMono flex min-h-screen px-8 sm:px-16 py-12"
+        "min-w-screen font-iAMono flex min-h-screen px-0 sm:px-16 py-12"
       }
       setActivePage={props.setActivePage}
     >
       <div className={`mt-8 flex flex-grow flex-col items-center sm:mt-20`}>
-        <div className="mb-8 flex w-full max-w-lg flex-grow flex-col">
-          <h1 className="text-deepblue-500 mb-4 text-4xl font-bold max-sm:ml-0">
+        <div className="mb-8 flex w-full max-w-lg flex-grow flex-col max-sm:max-w-sm">
+          <h1 className="text-deepblue-500 mb-4 text-4xl font-bold max-sm:ml-0 max-sm:px-8">
             Projects.
           </h1>
           <div className="z-10 mb-0 flex flex-grow flex-col justify-center gap-12">

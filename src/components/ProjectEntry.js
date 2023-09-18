@@ -68,7 +68,7 @@ export const ProjectEntry = forwardRef((props, ref) => {
             whileInView={animBackground}
             className="bg-deepblue-200 group-hover:bg-deepblue-400 absolute -z-10 h-full w-full drop-shadow-md transition-colors duration-300 ease-in-out"
           ></motion.div>
-          <div className="flex flex-col px-6 py-6">
+          <div className="flex flex-col p-6">
             <div className="mb-4">
               <p className="text-cod-gray-800 w-full font-bold">
                 {props.title || "project-title"}
